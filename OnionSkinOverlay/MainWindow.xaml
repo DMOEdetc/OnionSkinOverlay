@@ -1,17 +1,174 @@
-﻿<Window x:Class="OnionSkinOverlay.MainWindow"
+﻿<Window x:Name="OnionSkinOverlay_Window" x:Class="OnionSkinOverlay.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OnionSkinOverlay"
         mc:Ignorable="d"
-        
-        Title="OnionSkinOverley" Height="450" Width="800">
-    
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="91*"/>
-        </Grid.ColumnDefinitions>
+        Title="OnionSkinOverley" Height="450" Width="800" 
+        AllowsTransparency="True" 
+        WindowStyle="None"
+        Topmost="True"
+        StateChanged="Window_StateChanged" 
+        PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown">
 
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
+    <Window.Background>
+        <SolidColorBrush Opacity="0" Color="White"></SolidColorBrush>
+    </Window.Background>
+
+
+    <Grid>
+        <DockPanel Grid.Column="1" Grid.Row="1">
+            <DockPanel x:Name="titleBar" Background="White" DockPanel.Dock="Top">
+                <Rectangle Width="32" Height="32" DockPanel.Dock="Left" Fill="Black" Margin="2"/>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="2">
+
+                    <!-- Minimize Button -->
+                    <Border Width="24" Height="24" Margin="2" HorizontalAlignment="Right" MouseLeftButtonUp="OnMinimizeWindow" Grid.Column="2">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FFD0D0D0" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <TextBlock FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Text="0" FontFamily="Webdings" />
+                    </Border>
+
+                    <!-- Maximize Button -->
+                    <Border Width="24" Height="24" Margin="2" HorizontalAlignment="Right" MouseLeftButtonUp="OnMaximizeWindow" Grid.Column="3">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FFD0D0D0" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <TextBlock x:Name="IsMaximized" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Webdings">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Text" Value="1" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=InternalWindowState, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Value="Maximized">
+                                            <Setter Property="Text" Value="2" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Border>
+
+                    <!-- Close Button -->
+                    <Border Width="24" Height="24" Margin="2" HorizontalAlignment="Right" MouseLeftButtonUp="OnCloseWindow" Grid.Column="4">
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Red" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <TextBlock FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Text="r" FontFamily="Webdings" />
+                    </Border>
+                </StackPanel>
+
+                <Label MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Margin="8 0 0 0" FontSize="12" VerticalContentAlignment="Center" Content="{Binding Path=Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}, FallbackValue='Main Window'}" />
+            </DockPanel>
+
+            <Grid Background="White" DockPanel.Dock="Bottom" Height="32">
+                <Label x:Name="bottom_Label" VerticalContentAlignment="Center" Content="Version 1.0.0" />
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+
+
+            </Grid>
+        </DockPanel>
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="Thumb">
+                    <Style.Setters>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Border Background="Transparent" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style.Setters>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="25" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="25" />
+            </Grid.RowDefinitions>
+
+            <!-- Top/Left -->
+            <DockPanel LastChildFill="False" Grid.Row="0" Grid.Column="0">
+                <Thumb DockPanel.Dock="Left" Width="4" Cursor="SizeNWSE" Tag="0" DragDelta="Thumb_DragDelta" />
+                <Thumb DockPanel.Dock="Top" Height="4" Cursor="SizeNWSE" Tag="0" DragDelta="Thumb_DragDelta" />
+            </DockPanel>
+
+            <!-- Top/Right -->
+            <DockPanel LastChildFill="False" Grid.Row="0" Grid.Column="2">
+                <Thumb DockPanel.Dock="Right" Width="4" Cursor="SizeNESW" Tag="0" DragDelta="Thumb_DragDelta" />
+                <Thumb DockPanel.Dock="Top" Height="4" Cursor="SizeNESW" Tag="0" DragDelta="Thumb_DragDelta" />
+            </DockPanel>
+
+            <!-- Bottom/Left -->
+            <DockPanel LastChildFill="False" Grid.Row="2" Grid.Column="0">
+                <Thumb DockPanel.Dock="Left" Width="4" Cursor="SizeNESW" Tag="1" DragDelta="Thumb_DragDelta" />
+                <Thumb DockPanel.Dock="Bottom" Height="4" Cursor="SizeNESW" Tag="1" DragDelta="Thumb_DragDelta" />
+            </DockPanel>
+
+            <!-- Bottom/Right -->
+            <DockPanel LastChildFill="False" Grid.Row="2" Grid.Column="2">
+                <Thumb DockPanel.Dock="Right" Width="4" Cursor="SizeNWSE" Tag="1" DragDelta="Thumb_DragDelta" />
+                <Thumb DockPanel.Dock="Bottom" Height="4" Cursor="SizeNWSE" Tag="1" DragDelta="Thumb_DragDelta" />
+            </DockPanel>
+
+            <!-- Left -->
+            <Thumb Grid.Row="1" Grid.Column="0" Width="4" Cursor="SizeWE" Tag="0" HorizontalAlignment="Left" DragDelta="Thumb_DragDelta" />
+
+            <!-- Top -->
+            <Thumb Grid.Row="0" Grid.Column="1" Height="4" Cursor="SizeNS" Tag="0" VerticalAlignment="Top" DragDelta="Thumb_DragDelta" />
+
+            <!-- Right -->
+            <Thumb Grid.Row="1" Grid.Column="2" Width="4" Cursor="SizeWE" Tag="1" HorizontalAlignment="Right" DragDelta="Thumb_DragDelta" />
+
+            <!-- Bottom -->
+            <Thumb Grid.Row="2" Grid.Column="1" Height="4" Cursor="SizeNS" Tag="1" VerticalAlignment="Bottom" DragDelta="Thumb_DragDelta" />
+            <Button x:Name="button" Content="Bilderordner" Grid.Column="1" Margin="655,0,0,0" Grid.Row="2" Height="21" VerticalAlignment="Top" Click="Button_Click"/>
+            <Image x:Name="image_OnionLayer" Margin="0,10" Grid.Row="1" Grid.ColumnSpan="3" Opacity="{Binding Value, ElementName=slider_ImageTransparency}"/>
+            <Slider x:Name="slider_ImageTransparency" Grid.Column="1" HorizontalAlignment="Left" Margin="434,0,0,0" Grid.Row="2" VerticalAlignment="Top" Height="25" Width="202" TickFrequency=".1" Value=".5" SmallChange=".1" Maximum="1"/>
+        </Grid>
     </Grid>
+
 </Window>
