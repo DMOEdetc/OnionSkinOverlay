@@ -88,14 +88,14 @@
                 <Label MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Margin="8 0 0 0" FontSize="12" VerticalContentAlignment="Center" Content="{Binding Path=Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}, FallbackValue='Main Window'}" Background="#00000000" Foreground="White" />
                 <Label x:Name="label_Version" MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Margin="0,5,0,0" Content="Version: 0.1.1" RenderTransformOrigin="1.711,0.538" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#00000000" Foreground="#FF424242"/>
                 <Label MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Background="#00000000"/>
-                
+
             </DockPanel>
 
             <Grid Background="#FF07215E" DockPanel.Dock="Bottom" Height="32">
                 <!--Bottom Controls Area-->
-                <Slider x:Name="slider_ImageTransparency" Value="0.5" TickFrequency="0.05" IsSnapToTickEnabled="True" RenderTransformOrigin="1.183,-1.467" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,234,7" LargeChange="0.05" Maximum="1"/>
-                <Label x:Name="label_1" Content="Deckkraft:" Margin="0,0,171,3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White"/>
-                <Label x:Name="label" Content="{Binding Value, ElementName=slider_ImageTransparency}" Margin="0,0,150,4" ContentStringFormat="" RenderTransformOrigin="0.529,-0.24" HorizontalAlignment="Right" Height="25" VerticalAlignment="Bottom" Foreground="White"/>
+                <Slider x:Name="slider_ImageTransparency" Value="0.5" TickFrequency="0.05" IsSnapToTickEnabled="True" RenderTransformOrigin="1.183,-1.467" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,243,7" LargeChange="0.05" Maximum="1"/>
+                <Label x:Name="label_1" Content="Deckkraft:" Margin="0,0,180,3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White"/>
+                <Label x:Name="label" HorizontalContentAlignment="Left" Content="{Binding Value, ElementName=slider_ImageTransparency}" Margin="0,0,148,4" ContentStringFormat="" RenderTransformOrigin="0.529,-0.24" HorizontalAlignment="Right" Height="25" VerticalAlignment="Bottom" Foreground="White" Width="35"/>
                 <Button x:Name="button" Content="Bilderordner" Margin="0,0,53,6" Click="Button_Click" Width="80" VerticalAlignment="Bottom" HorizontalAlignment="Right" RenderTransformOrigin="-0.019,0.2"/>
                 <CheckBox x:Name="checkBox_AlwaysOnTop" Content="Immer im Vordergrund" HorizontalAlignment="Left" Margin="19,9,0,0" VerticalAlignment="Top" Foreground="White" Unchecked="CheckBox_AlwaysOnTop_Checked" Checked="CheckBox_AlwaysOnTop_Checked" IsChecked="True"/>
                 <fa:ImageAwesome x:Name="spinner_Scanning" Width="20" Height="20" Margin="0,0,20,6" Icon="CircleOutlineNotch" Spin="true" SpinDuration="4" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" Visibility="Hidden" />
