@@ -48,7 +48,6 @@ namespace OnionSkinOverlay
 
         #region --- Dependency Properties ---
         public static readonly DependencyProperty InternalWindowStateProperty = DependencyProperty.Register("InternalWindowState", typeof(WindowState), typeof(MainWindow), new PropertyMetadata(WindowState.Normal, new PropertyChangedCallback(OnInternalWindowStateChanged)));
-        private string Ordner;
         private string currentDirectory;
 
         public WindowState InternalWindowState
@@ -228,7 +227,7 @@ namespace OnionSkinOverlay
         {
             
             var dlg = new CommonOpenFileDialog();
-            dlg.Title = "My Title";
+            dlg.Title = "Zu überwachenden Ordner wählen...";
             dlg.IsFolderPicker = true;
             dlg.InitialDirectory = currentDirectory;
 
@@ -249,52 +248,71 @@ namespace OnionSkinOverlay
                 Console.WriteLine("Ordner zu " + currentDirectory + " geändert");
                 FileSystemWatcher watcher = new FileSystemWatcher();
                 watcher.Path = folder;
-                watcher.NotifyFilter = NotifyFilters.LastWrite;
+                //watcher.NotifyFilter = NotifyFilters.LastWrite;  //Nicht nötig
                 watcher.Filter = "*.*";
                 watcher.Changed += new FileSystemEventHandler(OnChangedFolder);
                 watcher.Created += new FileSystemEventHandler(OnChangedFolder);
+                watcher.Renamed += new RenamedEventHandler(OnChangedFolder); //Testweise
                 watcher.EnableRaisingEvents = true;
+
+                spinner_Scanning.Visibility = Visibility.Visible;
             }
         }
 
         private void OnChangedFolder(object sender, FileSystemEventArgs e)
         {
-            Console.WriteLine("Bildänderung");
-            var directory = new DirectoryInfo(currentDirectory);
-            var myFile = directory.GetFiles()
-             .OrderByDescending(f => f.LastWriteTime)
-             .First();
+            FileInfo filetocheck = new FileInfo(e.FullPath);
 
-            //This will lock the execution until the file is ready
-            
-            bool ergebnis = false;
-            while (!ergebnis)
+            if (filetocheck.Extension.Equals(".jpg") || filetocheck.Extension.Equals(".jepg") || filetocheck.Extension.Equals(".png"))
             {
-                try
+
+                Console.WriteLine("Bildänderung");
+
+                //This will lock the execution until the file is ready            
+                bool ergebnis = false;
+                while (!ergebnis)
                 {
-                    using (System.IO.File.Open(myFile.FullName,FileMode.Open, FileAccess.Read, FileShare.Read))
-                    ergebnis = true;
+                    try
+                    {
+                        using (System.IO.File.Open(filetocheck.FullName,FileMode.Open, FileAccess.Read, FileShare.Read))
+                        ergebnis = true;
+                    }
+                    catch (Exception)
+                    {
+                        System.Threading.Thread.Sleep(10);
+                        ergebnis = false;
+                    }
                 }
-                catch (Exception)
+
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(filetocheck.FullName);
+                bitmap.EndInit();
+                bitmap.Freeze();
+
+                this.Dispatcher.Invoke(() =>
                 {
-                    System.Threading.Thread.Sleep(100);
-                    ergebnis = false;
-                }
+                    image_OnionLayer.Source = bitmap;
+                });
+
+                Console.WriteLine("Bild wird angezeigt");
+
+
             }
 
-            var bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(myFile.FullName);
-            bitmap.EndInit();
-            bitmap.Freeze();
+        }
 
-            this.Dispatcher.Invoke(() =>
+        private void CheckBox_AlwaysOnTop_Checked(object sender, RoutedEventArgs e)
+        {
+            bool isChecked = (checkBox_AlwaysOnTop.IsChecked == true);
+            if (isChecked)
             {
-                image_OnionLayer.Source = bitmap;
-            });
-
-            Console.WriteLine("Bild wird angezeigt");
-
+                this.Topmost = true;
+            }
+            else
+            {
+                this.Topmost = false;
+            }
         }
     }
 }
