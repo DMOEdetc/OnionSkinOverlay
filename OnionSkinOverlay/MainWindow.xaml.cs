@@ -17,13 +17,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using Nikon;
 
 namespace OnionSkinOverlay
 {
     public partial class MainWindow : Window
     {
         #region --- Declarations ---
+        private NikonManager manager;
+        private NikonDevice device;
+        private Timer liveViewTimer;
         private Rect _location { get; set; }
         #endregion
 
@@ -31,8 +39,23 @@ namespace OnionSkinOverlay
         public MainWindow()
         {
             InitializeComponent();
+
+            // Disable buttons
+            ToggleButtons(false);
+
+            // Initialize live view timer
+            liveViewTimer = new Timer();
+            liveViewTimer.Tick += new EventHandler(liveViewTimer_Tick);
+            liveViewTimer.Interval = 1000 / 30;
+
+            // Initialize Nikon manager
+            manager = new NikonManager("Type0003.md3");
+            manager.DeviceAdded += new DeviceAddedDelegate(manager_DeviceAdded);
+            manager.DeviceRemoved += new DeviceRemovedDelegate(manager_DeviceRemoved);
+
         }
         #endregion
+
 
         #region --- Properties ---
         private Rect DesktopArea
@@ -112,10 +135,10 @@ namespace OnionSkinOverlay
         {
             Thumb thumb = (Thumb)sender;
             int tag = Convert.ToInt32(thumb.Tag);
-            if (thumb.Cursor == Cursors.SizeWE) HandleSizeWE(tag, e);
-            if (thumb.Cursor == Cursors.SizeNS) HandleSizeNS(tag, e);
-            if (thumb.Cursor == Cursors.SizeNESW) HandleSizeNESW(tag, e);
-            if (thumb.Cursor == Cursors.SizeNWSE) HandleSizeNWSE(tag, e);
+            if (thumb.Cursor == System.Windows.Input.Cursors.SizeWE) HandleSizeWE(tag, e);
+            if (thumb.Cursor == System.Windows.Input.Cursors.SizeNS) HandleSizeNS(tag, e);
+            if (thumb.Cursor == System.Windows.Input.Cursors.SizeNESW) HandleSizeNESW(tag, e);
+            if (thumb.Cursor == System.Windows.Input.Cursors.SizeNWSE) HandleSizeNWSE(tag, e);
         }
 
         private void HandleSizeNWSE(int tag, DragDeltaEventArgs e)
@@ -201,10 +224,6 @@ namespace OnionSkinOverlay
             this.InternalWindowState = WindowState.Minimized;
         }
 
-        private void OnCloseWindow(Object sender, MouseButtonEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
@@ -214,6 +233,12 @@ namespace OnionSkinOverlay
             }
         }
 
+        private void OnCloseWindow(Object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (this.InternalWindowState != WindowState.Maximized)
@@ -221,10 +246,116 @@ namespace OnionSkinOverlay
         }
         #endregion
 
+       
+
+        void device_CaptureComplete(NikonDevice sender, int data)
+        {
+            // Re-enable buttons when the capture completes
+            ToggleButtons(true);
+        }
+
+        void liveViewTimer_Tick(object sender, EventArgs e)
+        {
+            // Get live view image
+            NikonLiveViewImage image = null;
+
+            try
+            {
+                image = device.GetLiveViewImage();
+            }
+            catch (NikonException)
+            {
+                liveViewTimer.Stop();
+            }
+
+            // Set live view image on picture box
+            if (image != null)
+            {
+                MemoryStream stream = new MemoryStream(image.JpegBuffer);
+
+                BitmapImage bi = new BitmapImage();
+                bi.BeginInit();
+                bi.StreamSource = stream;
+                bi.EndInit();
+                image_LiveView.Source = bi;
+
+            }
+        }
+
+        void manager_DeviceRemoved(NikonManager sender, NikonDevice device)
+        {
+            this.device = null;
+
+            // Stop live view timer
+            liveViewTimer.Stop();
+
+            // Clear device name
+            label_devicename.Content = "Kein Gerät verbunden";
+
+            // Disable buttons
+            ToggleButtons(false);
+
+            // Clear live view picture
+            image_LiveView.Source = null;
+        }
+
+        //Neues Gerät erkannt
+        void manager_DeviceAdded(NikonManager sender, NikonDevice device)
+        {
+            this.device = device;
+
+            // Set the device name
+            label_devicename.Content = device.Name;
+
+            // Enable buttons
+            ToggleButtons(true);
+
+            // Hook up device capture events
+            device.ImageReady += new ImageReadyDelegate(device_ImageReady);
+            device.CaptureComplete += new CaptureCompleteDelegate(device_CaptureComplete);
+        }
+
+        void device_ImageReady(NikonDevice sender, NikonImage image)
+        {
+
+        }
 
 
+        //Buttons DeAktivieren
+        void ToggleButtons(bool enabled)
+        {
+            this.checkBox_liveview.IsEnabled = enabled;
+            this.button_aufnahme.IsEnabled = enabled;
+        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        //LiveView Handler
+        private void checkbox_liveview_Checked(object sender, EventArgs e)
+        {
+            if (device == null)
+            {
+                return;
+            }
+
+            device.LiveViewEnabled = false;
+            liveViewTimer.Stop();
+            image_LiveView.Source = null;
+           
+        }
+        private void checkbox_liveview_UnChecked(object sender, EventArgs e)
+        {
+            if (device == null)
+            {
+                return;
+            }
+            
+            device.LiveViewEnabled = true;
+            liveViewTimer.Start();
+            
+        }
+
+        //FolderCanger
+        private void Button_ChangeFolderClick(object sender, RoutedEventArgs e)
         {
             
             var dlg = new CommonOpenFileDialog();
@@ -259,7 +390,6 @@ namespace OnionSkinOverlay
                 spinner_Scanning.Visibility = Visibility.Visible;
             }
         }
-
         private void OnChangedFolder(object sender, FileSystemEventArgs e)
         {
             FileInfo filetocheck = new FileInfo(e.FullPath);
@@ -303,6 +433,29 @@ namespace OnionSkinOverlay
 
         }
 
+        private void button_aufnahme_Click(object sender, RoutedEventArgs e)
+        {
+            if (device == null)
+            {
+                return;
+            }
+
+            ToggleButtons(false);
+
+            try
+            {
+                device.Capture();
+            }
+            catch (NikonException ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                ToggleButtons(true);
+            }
+
+            image_LiveView.Source = null;
+        }
+
+        //Always on Top Checkbox
         private void CheckBox_AlwaysOnTop_Checked(object sender, RoutedEventArgs e)
         {
             bool isChecked = (checkBox_AlwaysOnTop.IsChecked == true);
