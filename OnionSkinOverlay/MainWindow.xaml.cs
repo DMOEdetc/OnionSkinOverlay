@@ -12,6 +12,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -313,6 +314,26 @@ namespace OnionSkinOverlay
             {
                 this.Topmost = false;
             }
+        }
+
+        
+        //Menü öffnen und Schließen
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ThicknessAnimation tahauptmenu = new ThicknessAnimation();
+            tahauptmenu.From = MainSettingsGrid.Margin;
+            tahauptmenu.To = new Thickness(0, 40, 260, 32);
+            tahauptmenu.Duration = new Duration(TimeSpan.FromMilliseconds(150));
+            MainSettingsGrid.BeginAnimation(Grid.MarginProperty, tahauptmenu);
+        }
+
+        private void ToggleButton_UnChecked(object sender, RoutedEventArgs e)
+        {
+            ThicknessAnimation tahauptmenu = new ThicknessAnimation();
+            tahauptmenu.From = MainSettingsGrid.Margin;
+            tahauptmenu.To = new Thickness(-260, 40, 0, 32);
+            tahauptmenu.Duration = new Duration(TimeSpan.FromMilliseconds(150));
+            MainSettingsGrid.BeginAnimation(Grid.MarginProperty, tahauptmenu);
         }
     }
 }
