@@ -15,38 +15,8 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_237996613DB0778CFB1916F3B659B2F1"
-        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_262A2F19323A5BC3CA6F13CE690B90E1"
-        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_262A2F19323A5BC3CA6F13CE690B90E1"
-        "OwnerKey" = "8:_237996613DB0778CFB1916F3B659B2F1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2B2A5E8AFE6D8283B998E95F3E821B07"
-        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2B2A5E8AFE6D8283B998E95F3E821B07"
-        "OwnerKey" = "8:_D2720E4A9AA989D66409B5FB8DB3F79A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_57627AAB0E3BF1C19F4BD05F68B2A3DB"
-        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
+        "MsmKey" = "8:_24A74CB5F74E4BEA8574A670D7E8CA2A"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,8 +27,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_89BF78C7092636DF2F6CFCB045A596CA"
-        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
+        "MsmKey" = "8:_6554EC84C36743DEB0157B3B7E11CEDA"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,80 +39,14 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_BC9199E6E4A74258A6575D615079D654"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D2720E4A9AA989D66409B5FB8DB3F79A"
-        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DE0783181EE47783104D4DA4EE4DE64F"
-        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_FC90FC1362174C6DAB37856545E0F328"
         "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DE0783181EE47783104D4DA4EE4DE64F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_237996613DB0778CFB1916F3B659B2F1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_262A2F19323A5BC3CA6F13CE690B90E1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D2720E4A9AA989D66409B5FB8DB3F79A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2B2A5E8AFE6D8283B998E95F3E821B07"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_57627AAB0E3BF1C19F4BD05F68B2A3DB"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_89BF78C7092636DF2F6CFCB045A596CA"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -240,23 +144,12 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_237996613DB0778CFB1916F3B659B2F1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_24A74CB5F74E4BEA8574A670D7E8CA2A"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_237996613DB0778CFB1916F3B659B2F1"
-                    {
-                    "Name" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.WindowsAPICodePack.Shell.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:C:\\Program Files (x86)\\OnionSkinOverlay\\NkdPTP.dll"
+            "TargetName" = "8:NkdPTP.dll"
             "Tag" = "8:"
-            "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
+            "Folder" = "8:_4379B957288C4F2297BF12689BB57F6D"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -268,100 +161,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_262A2F19323A5BC3CA6F13CE690B90E1"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_262A2F19323A5BC3CA6F13CE690B90E1"
-                    {
-                    "Name" = "8:Microsoft.WindowsAPICodePack.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Microsoft.WindowsAPICodePack.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2B2A5E8AFE6D8283B998E95F3E821B07"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MaterialDesignColors, Version=1.2.2.920, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_2B2A5E8AFE6D8283B998E95F3E821B07"
-                    {
-                    "Name" = "8:MaterialDesignColors.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MaterialDesignColors.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_57627AAB0E3BF1C19F4BD05F68B2A3DB"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_57627AAB0E3BF1C19F4BD05F68B2A3DB"
-                    {
-                    "Name" = "8:FontAwesome.WPF.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:FontAwesome.WPF.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_59406D5F5F3A43CDA056A07EB1BF798F"
@@ -384,23 +184,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_89BF78C7092636DF2F6CFCB045A596CA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6554EC84C36743DEB0157B3B7E11CEDA"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                "ScatterAssemblies"
-                {
-                    "_89BF78C7092636DF2F6CFCB045A596CA"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Net.Http.dll"
-            "TargetName" = "8:"
+            "SourcePath" = "8:C:\\Program Files (x86)\\OnionSkinOverlay\\NkdPTP.dll"
+            "TargetName" = "8:NkdPTP.dll"
             "Tag" = "8:"
-            "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
+            "Folder" = "8:_BF52D86F9A8E4715890EE389E0131121"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -412,7 +201,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B26AC26FCE4441BE92046DD0D4E8A3CB"
@@ -433,88 +222,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BC9199E6E4A74258A6575D615079D654"
-            {
-            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x86\\NkdPTP.dll"
-            "TargetName" = "8:NkdPTP.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D2720E4A9AA989D66409B5FB8DB3F79A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:MaterialDesignThemes.Wpf, Version=3.0.1.920, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_D2720E4A9AA989D66409B5FB8DB3F79A"
-                    {
-                    "Name" = "8:MaterialDesignThemes.Wpf.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:MaterialDesignThemes.Wpf.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DE0783181EE47783104D4DA4EE4DE64F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:nikoncswrapper, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_DE0783181EE47783104D4DA4EE4DE64F"
-                    {
-                    "Name" = "8:nikoncswrapper.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:nikoncswrapper.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FC90FC1362174C6DAB37856545E0F328"
@@ -636,17 +343,17 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Setup"
-        "ProductCode" = "8:{0DBA7DAB-DE09-473B-8EEB-05B7D8365013}"
-        "PackageCode" = "8:{0F2195C2-1E38-4FD4-9F30-3320CC373DF1}"
+        "ProductName" = "8:OnionSkinOverlay"
+        "ProductCode" = "8:{911141DE-6234-4DA6-BB50-F842B08A0D1D}"
+        "PackageCode" = "8:{82791973-EE4C-48C5-8099-D98A88440F07}"
         "UpgradeCode" = "8:{FC1F291D-866E-44A5-B3E2-89AFD73FC83D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.5.0"
-        "Manufacturer" = "8:Default Company Name"
+        "ProductVersion" = "8:1.5.1"
+        "Manufacturer" = "8:DMOEdetc"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:OnionSkinOverlay"
@@ -760,7 +467,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_258BEA23982A4713A232BB9291A0A063"
             {
-            "Name" = "8:Shortcut to Primäre Ausgabe from OnionSkinOverlay (Active)"
+            "Name" = "8:OnionSkinOverlay"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -769,12 +476,12 @@
             "Target" = "8:"
             "Folder" = "8:_6BA2AEDAC99F4D6AAF083D3FEA0506FC"
             "WorkingFolder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
-            "Icon" = "8:"
+            "Icon" = "8:_FC90FC1362174C6DAB37856545E0F328"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3B76352F21994B958E2F79C7A3D8A658"
             {
-            "Name" = "8:Shortcut to Primäre Ausgabe from OnionSkinOverlay (Release Any CPU)"
+            "Name" = "8:OnionSkinOverlay"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"

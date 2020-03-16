@@ -1,4 +1,6 @@
-﻿using System;
+﻿//https://sourceforge.net/p/nikoncswrapper/wiki/Getting%20Started/
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -264,7 +266,6 @@ namespace OnionSkinOverlay
         }
         #endregion
 
-       
 
         void device_CaptureComplete(NikonDevice sender, int data)
         {
@@ -335,7 +336,6 @@ namespace OnionSkinOverlay
             device.ImageReady += new ImageReadyDelegate(device_ImageReady);
             device.CaptureComplete += new CaptureCompleteDelegate(device_CaptureComplete);
         }
-
 
 
         //Buttons DeAktivieren
