@@ -16,13 +16,13 @@
         "Entry"
         {
         "MsmKey" = "8:_237996613DB0778CFB1916F3B659B2F1"
-        "OwnerKey" = "8:_90A783C82A394028B18E2FB48A247A73"
+        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_262A2F19323A5BC3CA6F13CE690B90E1"
-        "OwnerKey" = "8:_90A783C82A394028B18E2FB48A247A73"
+        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -34,7 +34,7 @@
         "Entry"
         {
         "MsmKey" = "8:_2B2A5E8AFE6D8283B998E95F3E821B07"
-        "OwnerKey" = "8:_90A783C82A394028B18E2FB48A247A73"
+        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -46,7 +46,7 @@
         "Entry"
         {
         "MsmKey" = "8:_57627AAB0E3BF1C19F4BD05F68B2A3DB"
-        "OwnerKey" = "8:_90A783C82A394028B18E2FB48A247A73"
+        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,13 +58,7 @@
         "Entry"
         {
         "MsmKey" = "8:_89BF78C7092636DF2F6CFCB045A596CA"
-        "OwnerKey" = "8:_90A783C82A394028B18E2FB48A247A73"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_90A783C82A394028B18E2FB48A247A73"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,13 +76,19 @@
         "Entry"
         {
         "MsmKey" = "8:_D2720E4A9AA989D66409B5FB8DB3F79A"
-        "OwnerKey" = "8:_90A783C82A394028B18E2FB48A247A73"
+        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_DE0783181EE47783104D4DA4EE4DE64F"
-        "OwnerKey" = "8:_90A783C82A394028B18E2FB48A247A73"
+        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -100,7 +100,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_90A783C82A394028B18E2FB48A247A73"
+        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -637,15 +637,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup"
-        "ProductCode" = "8:{499C89D0-F1A7-43DA-9A43-FC0EE73D906B}"
-        "PackageCode" = "8:{655C0CF8-9F13-48A4-90A3-0A9CFCE5479F}"
+        "ProductCode" = "8:{0DBA7DAB-DE09-473B-8EEB-05B7D8365013}"
+        "PackageCode" = "8:{0F2195C2-1E38-4FD4-9F30-3320CC373DF1}"
         "UpgradeCode" = "8:{FC1F291D-866E-44A5-B3E2-89AFD73FC83D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.5.0"
         "Manufacturer" = "8:Default Company Name"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -758,15 +758,29 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8F545A8D987743A09C2510928E2C5AEA"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_258BEA23982A4713A232BB9291A0A063"
             {
-            "Name" = "8:OnionSkinOverlay"
+            "Name" = "8:Shortcut to Primäre Ausgabe from OnionSkinOverlay (Active)"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_90A783C82A394028B18E2FB48A247A73"
+            "Target" = "8:"
+            "Folder" = "8:_6BA2AEDAC99F4D6AAF083D3FEA0506FC"
+            "WorkingFolder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3B76352F21994B958E2F79C7A3D8A658"
+            {
+            "Name" = "8:Shortcut to Primäre Ausgabe from OnionSkinOverlay (Release Any CPU)"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_D35B58A9F1E54837A4418824A333C4A2"
             "Folder" = "8:_13B364C7D69941A2B43AFF4D315BD54D"
             "WorkingFolder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
             "Icon" = "8:_FC90FC1362174C6DAB37856545E0F328"
@@ -1171,9 +1185,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_90A783C82A394028B18E2FB48A247A73"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D35B58A9F1E54837A4418824A333C4A2"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\OnionSkinOverlay\\obj\\Release\\OnionSkinOverlay.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
