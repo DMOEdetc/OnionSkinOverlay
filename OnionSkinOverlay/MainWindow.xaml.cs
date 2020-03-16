@@ -32,6 +32,12 @@ namespace OnionSkinOverlay
         private NikonManager manager;
         private NikonDevice device;
         private Timer liveViewTimer;
+
+        private int imageruncounter = 0;
+        private int imagecounter;
+        string file_name = "";
+        private bool device_ready = false;
+
         private Rect _location { get; set; }
         #endregion
 
@@ -41,7 +47,8 @@ namespace OnionSkinOverlay
             InitializeComponent();
 
             // Disable buttons
-            ToggleButtons(false);
+            device_ready = false;
+            ToggleButtons();
 
             // Initialize live view timer
             liveViewTimer = new Timer();
@@ -66,8 +73,7 @@ namespace OnionSkinOverlay
             manager.DeviceRemoved += new DeviceRemovedDelegate(manager_DeviceRemoved);
 
         }
-        #endregion
-
+        #endregion  
 
         #region --- Properties ---
         private Rect DesktopArea
@@ -263,7 +269,8 @@ namespace OnionSkinOverlay
         void device_CaptureComplete(NikonDevice sender, int data)
         {
             // Re-enable buttons when the capture completes
-            ToggleButtons(true);
+            device_ready = true;
+            ToggleButtons();
         }
 
         void liveViewTimer_Tick(object sender, EventArgs e)
@@ -305,7 +312,8 @@ namespace OnionSkinOverlay
             label_devicename.Content = "Kein Gerät verbunden";
 
             // Disable buttons
-            ToggleButtons(false);
+            device_ready = false;
+            ToggleButtons();
 
             // Clear live view picture
             image_LiveView.Source = null;
@@ -320,22 +328,24 @@ namespace OnionSkinOverlay
             label_devicename.Content = device.Name;
 
             // Enable buttons
-            ToggleButtons(true);
+            device_ready = true;
+            ToggleButtons();
 
             // Hook up device capture events
             device.ImageReady += new ImageReadyDelegate(device_ImageReady);
             device.CaptureComplete += new CaptureCompleteDelegate(device_CaptureComplete);
         }
 
-        void device_ImageReady(NikonDevice sender, NikonImage image)
-        {
-
-        }
 
 
         //Buttons DeAktivieren
-        void ToggleButtons(bool enabled)
+        void ToggleButtons()
         {
+            bool enabled = device_ready;
+            if (currentDirectory == null) //Wenn Speicherort nicht gesetzt
+            {
+                enabled = false;
+            }
             this.checkBox_liveview.IsEnabled = enabled;
             this.button_aufnahme.IsEnabled = enabled;
         }
@@ -343,6 +353,11 @@ namespace OnionSkinOverlay
 
         //LiveView Handler
         private void checkbox_liveview_UnChecked(object sender, EventArgs e)
+        {
+            deaktivate_liveview();
+           
+        }
+        private void deaktivate_liveview()
         {
             if (device == null)
             {
@@ -352,18 +367,20 @@ namespace OnionSkinOverlay
             device.LiveViewEnabled = false;
             liveViewTimer.Stop();
             image_LiveView.Source = null;
-           
         }
         private void checkbox_liveview_Checked(object sender, EventArgs e)
+        {
+            aktivate_liveview();
+        }
+        private void aktivate_liveview()
         {
             if (device == null)
             {
                 return;
             }
-            
+
             device.LiveViewEnabled = true;
             liveViewTimer.Start();
-            
         }
 
         //FolderCanger
@@ -400,6 +417,8 @@ namespace OnionSkinOverlay
                 watcher.EnableRaisingEvents = true;
 
                 spinner_Scanning.Visibility = Visibility.Visible;
+
+                ToggleButtons();
             }
         }
         private void OnChangedFolder(object sender, FileSystemEventArgs e)
@@ -447,12 +466,14 @@ namespace OnionSkinOverlay
 
         private void button_aufnahme_Click(object sender, RoutedEventArgs e)
         {
+            deaktivate_liveview();
             if (device == null)
             {
                 return;
             }
 
-            ToggleButtons(false);
+            device_ready = false;
+            ToggleButtons();
 
             try
             {
@@ -460,11 +481,108 @@ namespace OnionSkinOverlay
             }
             catch (NikonException ex)
             {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-                ToggleButtons(true);
+                device_ready = true;
+                ToggleButtons();
+
+                if (checkBox_liveview.IsChecked == true)
+                {
+                    aktivate_liveview();
+                }
             }
 
             image_LiveView.Source = null;
+        }
+        void device_ImageReady(NikonDevice sender, NikonImage image)
+        {
+            string extension = "";
+
+            if (imageruncounter == 0)
+            {
+                string suffix = "";
+                string mitte = "";
+
+                //Mitte
+                if (comboBox_Filename_Mitte.SelectedItem != null)
+                {
+                    int itemindex = comboBox_Filename_Mitte.SelectedIndex;
+
+                    switch (itemindex)
+                    {
+                        case -1: // Nichts gewählt
+                            break;
+
+                        case 0: // Nummern  
+                            imagecounter = imagecounter + 1;
+                            mitte = imagecounter.ToString("D3");
+                            break;
+
+                        case 1: // Datum
+                            mitte = DateTime.Now.ToString("dd.MM.yyyy");
+                            break;
+
+                        case 2: // Urzeit
+                            mitte = DateTime.Now.ToString("HH.mm.ss");
+                            break;
+
+                    }
+                }
+
+                //Suffix
+                if (comboBox_Filename_Suffix.SelectedItem != null)
+                {
+                    int itemindex = comboBox_Filename_Suffix.SelectedIndex;
+
+                    switch (itemindex)
+                    {
+                        case -1: // Nichts gewählt
+                            break;
+
+                        case 0: // Nichts gewählt
+                            break;
+
+                        case 1: // Nummern  
+                            imagecounter = imagecounter + 1;
+                            mitte = imagecounter.ToString("D3");
+                            break;
+
+                        case 2: // Datum
+                            mitte = DateTime.Now.ToString("dd.MM.yyyy");
+                            break;
+
+                        case 3: // Urzeit
+                            mitte = DateTime.Now.ToString("HH.mm.ss");
+                            break;
+
+                    }
+                }
+         
+                extension = ".jpg";
+
+                file_name = currentDirectory + "\\" + textBox_prefix.Text + mitte + suffix;
+
+                if (File.Exists(file_name + extension))
+                {
+                    file_name = currentDirectory + "\\" + textBox_prefix.Text + mitte + suffix + "_new_";
+                }
+
+                imageruncounter = 1;
+            }
+            else
+            {
+                extension = ".raw";
+                imageruncounter = 0;
+            }
+
+            
+            using (FileStream stream = new FileStream(file_name + extension, FileMode.Create, FileAccess.Write))
+            {
+                stream.Write(image.Buffer, 0, image.Buffer.Length);
+            }
+
+            if (imageruncounter == 0 && checkBox_liveview.IsChecked == true)
+            {
+                aktivate_liveview();
+            }
         }
 
         //Always on Top Checkbox
@@ -487,7 +605,7 @@ namespace OnionSkinOverlay
         {
             ThicknessAnimation tahauptmenu = new ThicknessAnimation();
             tahauptmenu.From = MainSettingsGrid.Margin;
-            tahauptmenu.To = new Thickness(0, 40, 260, 32);
+            tahauptmenu.To = new Thickness(0, 80, 260, 70);
             tahauptmenu.Duration = new Duration(TimeSpan.FromMilliseconds(150));
             MainSettingsGrid.BeginAnimation(Grid.MarginProperty, tahauptmenu);
         }
@@ -496,9 +614,11 @@ namespace OnionSkinOverlay
         {
             ThicknessAnimation tahauptmenu = new ThicknessAnimation();
             tahauptmenu.From = MainSettingsGrid.Margin;
-            tahauptmenu.To = new Thickness(-260, 40, 0, 32);
+            tahauptmenu.To = new Thickness(-260, 80, 0, 70);
             tahauptmenu.Duration = new Duration(TimeSpan.FromMilliseconds(150));
             MainSettingsGrid.BeginAnimation(Grid.MarginProperty, tahauptmenu);
         }
+
+      
     }
 }
