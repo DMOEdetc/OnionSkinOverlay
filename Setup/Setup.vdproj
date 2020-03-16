@@ -664,7 +664,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OnionSkinOverlay"
         "ProductCode" = "8:{5DE078E7-316C-4763-99D3-341E1AF1D4D5}"
-        "PackageCode" = "8:{8214E354-BAE9-41B1-B43D-10D893637D43}"
+        "PackageCode" = "8:{2369C594-3482-4968-878A-3873E1B41802}"
         "UpgradeCode" = "8:{FC1F291D-866E-44A5-B3E2-89AFD73FC83D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -795,7 +795,7 @@
             "Target" = "8:_D35B58A9F1E54837A4418824A333C4A2"
             "Folder" = "8:_6BA2AEDAC99F4D6AAF083D3FEA0506FC"
             "WorkingFolder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
-            "Icon" = "8:"
+            "Icon" = "8:_FC90FC1362174C6DAB37856545E0F328"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3B76352F21994B958E2F79C7A3D8A658"
