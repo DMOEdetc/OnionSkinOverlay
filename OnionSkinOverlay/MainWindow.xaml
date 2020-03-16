@@ -202,10 +202,10 @@
 
         <!-- Sidemenü -->
         <Grid x:Name="MainSettingsGrid" HorizontalAlignment="Left" Margin="-260,40,0,32" Width="250.6" Background="#FF07215E" Panel.ZIndex="-1">
-            <Button x:Name="button" Content="Bilderordner wählen..." Click="Button_ChangeFolderClick"  Height="25" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="10,61,9.6,290"/>
-            <Label x:Name="label1" Content="Einstellungen:" Margin="5,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.046,-0.014" Width="161" HorizontalAlignment="Left" Foreground="#DDFFFFFF"/>
+            <Button x:Name="button" Content="Bilderordner wählen..." Click="Button_ChangeFolderClick"  Height="25" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="10,66,9.6,287"/>
+            <Label x:Name="label1" Content="Einstellungen:" Margin="5,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.046,-0.014" Width="161" HorizontalAlignment="Left" Foreground="#DDFFFFFF" FontSize="14" FontWeight="Bold"/>
             <CheckBox x:Name="checkBox_liveview" Checked="checkbox_liveview_Checked" Unchecked="checkbox_liveview_UnChecked" Content="LiveView aktivieren" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Width="231" Height="19" Foreground="White"/>
-            <Label x:Name="label_devicename" Content="Kein Gerät verbunden" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="123" Background="#00000000" Foreground="#DDFFFFFF"/>
+            <Label x:Name="label_devicename" Content="Kein Gerät verbunden" HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top" Width="231" Background="#00000000" Foreground="#DDFFFFFF"/>
 
         </Grid>
 
