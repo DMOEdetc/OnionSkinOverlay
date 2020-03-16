@@ -33,7 +33,7 @@ namespace OnionSkinOverlay
         #region --- Declarations ---
         private NikonManager manager;
         private NikonDevice device;
-        private Timer liveViewTimer;
+        private Timer liveViewTimer, batteryTimer;
 
         private int imageruncounter = 0;
         private int imagecounter;
@@ -56,6 +56,10 @@ namespace OnionSkinOverlay
             liveViewTimer = new Timer();
             liveViewTimer.Tick += new EventHandler(liveViewTimer_Tick);
             liveViewTimer.Interval = 1000 / 30;
+
+            batteryTimer = new Timer();
+            batteryTimer.Tick += new EventHandler(batteryTimer_Tick);
+            batteryTimer.Interval = 30000;
 
             // Initialize Nikon manager
             bool is64 = Environment.Is64BitProcess;
@@ -216,6 +220,14 @@ namespace OnionSkinOverlay
         }
         #endregion
 
+        #region --- OnClose ---
+        protected override void OnClosed(EventArgs e)
+        {
+            manager.Shutdown();
+            base.OnClosed(e);
+        }
+        #endregion
+
         #region --- Event Handlers ---
         private void OnDragMoveWindow(Object sender, MouseButtonEventArgs e)
         {
@@ -315,6 +327,7 @@ namespace OnionSkinOverlay
             // Disable buttons
             device_ready = false;
             ToggleButtons();
+            batteryTimer.Stop();
 
             // Clear live view picture
             image_LiveView.Source = null;
@@ -331,6 +344,9 @@ namespace OnionSkinOverlay
             // Enable buttons
             device_ready = true;
             ToggleButtons();
+
+            //Enable Battery watcher
+            batteryTimer.Start();
 
             // Hook up device capture events
             device.ImageReady += new ImageReadyDelegate(device_ImageReady);
@@ -619,6 +635,35 @@ namespace OnionSkinOverlay
             MainSettingsGrid.BeginAnimation(Grid.MarginProperty, tahauptmenu);
         }
 
-      
+
+        //Battery Level
+        void batteryTimer_Tick(object sender, EventArgs e)
+        {
+            int battery_level = getBatteryLevel();
+            if (battery_level < 50)
+            {
+                label_battery.Foreground = System.Windows.Media.Brushes.Yellow;
+            } else if (battery_level < 15)
+            {
+                label_battery.Foreground = System.Windows.Media.Brushes.Red;
+
+            } else if (battery_level > 50)
+            {
+                label_battery.Foreground = System.Windows.Media.Brushes.White;
+            }
+            label_battery.Content = "Akku: " + battery_level.ToString("D2") + " %";
+        }
+        private int getBatteryLevel()
+        {
+            try
+            {
+                int batteryLevel = device.GetInteger(eNkMAIDCapability.kNkMAIDCapability_BatteryLevel);
+                return batteryLevel;
+            }
+            catch (NikonException ex)
+            {
+                return 0;
+            }
+        }
     }
 }

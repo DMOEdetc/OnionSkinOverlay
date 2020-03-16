@@ -105,8 +105,9 @@
                 <Label x:Name="label_1" Content="Deckkraft:" Margin="0,0,92,5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Height="22"/>
                 <Label x:Name="label" HorizontalContentAlignment="Left" Content="{Binding Value, ElementName=slider_ImageTransparency}" Margin="0,0,57,5" ContentStringFormat="" RenderTransformOrigin="0.529,-0.24" HorizontalAlignment="Right" Height="22" VerticalAlignment="Bottom" Foreground="White" Width="35"/>
                 <CheckBox x:Name="checkBox_AlwaysOnTop" Content="Immer im Vordergrund" HorizontalAlignment="Left" Margin="19,3,0,0" VerticalAlignment="Top" Foreground="White" Unchecked="CheckBox_AlwaysOnTop_Checked" Checked="CheckBox_AlwaysOnTop_Checked" IsChecked="True" Height="27"/>
-                <Button x:Name="button_aufnahme" Content="Auslöser" Click="button_aufnahme_Click" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="224,5,442,5" AutomationProperties.IsColumnHeader="True" Height="Auto" Width="100"/>
+                <Button x:Name="button_aufnahme" Content="Auslöser" Click="button_aufnahme_Click" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="194,5,506,5" AutomationProperties.IsColumnHeader="True" Height="Auto" Width="100"/>
                 <fa:ImageAwesome x:Name="spinner_Scanning" Width="20" Height="20" Margin="0,0,20,6" Icon="CircleOutlineNotch" Spin="true" SpinDuration="4" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" Visibility="Hidden" />
+                <Label x:Name="label_battery" Content="" HorizontalAlignment="Left" Margin="309,5,0,0" VerticalAlignment="Top" Width="111" Foreground="#DDFFFFFF"/>
             </Grid>
 
             <Grid>
