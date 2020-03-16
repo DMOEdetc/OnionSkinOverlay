@@ -495,7 +495,7 @@ namespace OnionSkinOverlay
             {
                 device.Capture();
             }
-            catch (NikonException ex)
+            catch (NikonException)
             {
                 device_ready = true;
                 ToggleButtons();
@@ -660,7 +660,7 @@ namespace OnionSkinOverlay
                 int batteryLevel = device.GetInteger(eNkMAIDCapability.kNkMAIDCapability_BatteryLevel);
                 return batteryLevel;
             }
-            catch (NikonException ex)
+            catch (NikonException)
             {
                 return 0;
             }

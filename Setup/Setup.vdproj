@@ -663,15 +663,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OnionSkinOverlay"
-        "ProductCode" = "8:{911141DE-6234-4DA6-BB50-F842B08A0D1D}"
-        "PackageCode" = "8:{82791973-EE4C-48C5-8099-D98A88440F07}"
+        "ProductCode" = "8:{5DE078E7-316C-4763-99D3-341E1AF1D4D5}"
+        "PackageCode" = "8:{8214E354-BAE9-41B1-B43D-10D893637D43}"
         "UpgradeCode" = "8:{FC1F291D-866E-44A5-B3E2-89AFD73FC83D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.5.1"
+        "ProductVersion" = "8:1.5.2"
         "Manufacturer" = "8:DMOEdetc"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -784,7 +784,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_258BEA23982A4713A232BB9291A0A063"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2CD3B6F7F26344038E62C7EE37117BE6"
             {
             "Name" = "8:OnionSkinOverlay"
             "Arguments" = "8:"
@@ -792,10 +792,10 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:"
+            "Target" = "8:_D35B58A9F1E54837A4418824A333C4A2"
             "Folder" = "8:_6BA2AEDAC99F4D6AAF083D3FEA0506FC"
             "WorkingFolder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
-            "Icon" = "8:_FC90FC1362174C6DAB37856545E0F328"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3B76352F21994B958E2F79C7A3D8A658"
