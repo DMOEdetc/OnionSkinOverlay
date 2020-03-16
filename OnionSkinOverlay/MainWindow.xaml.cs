@@ -49,7 +49,19 @@ namespace OnionSkinOverlay
             liveViewTimer.Interval = 1000 / 30;
 
             // Initialize Nikon manager
-            manager = new NikonManager("Type0003.md3");
+            bool is64 = Environment.Is64BitProcess;
+
+            String md3 = "";
+
+            if (is64)
+            {
+                md3 = "Nikon SDK\\Binary Files\\x64\\Type0003.md3";
+            } else
+            {
+                md3 = "Nikon SDK\\Binary Files\\x86\\Type0003.md3";
+            }
+
+            manager = new NikonManager(md3);
             manager.DeviceAdded += new DeviceAddedDelegate(manager_DeviceAdded);
             manager.DeviceRemoved += new DeviceRemovedDelegate(manager_DeviceRemoved);
 
@@ -330,7 +342,7 @@ namespace OnionSkinOverlay
 
 
         //LiveView Handler
-        private void checkbox_liveview_Checked(object sender, EventArgs e)
+        private void checkbox_liveview_UnChecked(object sender, EventArgs e)
         {
             if (device == null)
             {
@@ -342,7 +354,7 @@ namespace OnionSkinOverlay
             image_LiveView.Source = null;
            
         }
-        private void checkbox_liveview_UnChecked(object sender, EventArgs e)
+        private void checkbox_liveview_Checked(object sender, EventArgs e)
         {
             if (device == null)
             {

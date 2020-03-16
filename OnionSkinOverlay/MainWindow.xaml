@@ -188,20 +188,20 @@
             <Thumb Grid.Row="2" Grid.Column="1" Height="4" Cursor="SizeNS" Tag="1" VerticalAlignment="Bottom" DragDelta="Thumb_DragDelta" />
 
             <!-- Content -->
-            <Image x:Name="image_LiveView" Margin="0,10" Grid.Row="1" Grid.ColumnSpan="3" Panel.ZIndex="-2"/>
-            <Image x:Name="image_OnionLayer" Margin="0,10" Grid.Row="1" Grid.ColumnSpan="3" Opacity="{Binding Value, ElementName=slider_ImageTransparency}" Panel.ZIndex="-1"/>
+            <Image x:Name="image_LiveView" Margin="0,15,0,10" Grid.Row="1" Grid.ColumnSpan="3" Panel.ZIndex="-3"/>
+            <Image x:Name="image_OnionLayer" Margin="0,15,0,10" Grid.Row="1" Grid.ColumnSpan="3" Opacity="{Binding Value, ElementName=slider_ImageTransparency}" Panel.ZIndex="-2"/>
             <ToggleButton 
                 Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
                 IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" 
                 RenderTransformOrigin="2.41,4.821" Margin="0,15,735,353" Grid.Row="1" Background="#00000000" Foreground="White" 
-                Grid.ColumnSpan="2" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Unchecked="ToggleButton_UnChecked" Checked="ToggleButton_Checked" Panel.ZIndex="100" />
+                Grid.ColumnSpan="2" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Unchecked="ToggleButton_UnChecked" Checked="ToggleButton_Checked" Panel.ZIndex="500" />
 
 
 
         </Grid>
 
         <!-- Sidemenü -->
-        <Grid x:Name="MainSettingsGrid" HorizontalAlignment="Left" Margin="-260,40,0,32" Width="250.6" Background="#FF07215E" Panel.ZIndex="-1">
+        <Grid x:Name="MainSettingsGrid" HorizontalAlignment="Left" Margin="-260,40,0,32" Width="250.6" Background="#FF07215E" Panel.ZIndex="100">
             <Button x:Name="button" Content="Bilderordner wählen..." Click="Button_ChangeFolderClick"  Height="25" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="10,66,9.6,287"/>
             <Label x:Name="label1" Content="Einstellungen:" Margin="5,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.046,-0.014" Width="161" HorizontalAlignment="Left" Foreground="#DDFFFFFF" FontSize="14" FontWeight="Bold"/>
             <CheckBox x:Name="checkBox_liveview" Checked="checkbox_liveview_Checked" Unchecked="checkbox_liveview_UnChecked" Content="LiveView aktivieren" HorizontalAlignment="Left" Margin="10,133,0,0" VerticalAlignment="Top" Width="231" Height="19" Foreground="White"/>
