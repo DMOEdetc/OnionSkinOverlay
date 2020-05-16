@@ -63,7 +63,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A2B974CB57ACFED0221CA34ADEA9E2D3AABA6005</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>DCA046ED8196DFEFC7EF241E7210BC9EE4C52E7F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>OnionSkinOverlay_TemporaryKey.pfx</ManifestKeyFile>
@@ -170,6 +170,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Nikon SDK\Binary Files\x64\Type0003.md3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Nikon SDK\Binary Files\x86\Type0003.md3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="OnionSkinOverlay_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -195,9 +201,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Nikon SDK\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="icon.ico" />
     <Content Include="NkdPTP.dll" />
