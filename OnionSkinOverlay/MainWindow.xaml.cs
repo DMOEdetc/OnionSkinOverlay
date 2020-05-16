@@ -653,6 +653,12 @@ namespace OnionSkinOverlay
             }
             label_battery.Content = "Akku: " + battery_level.ToString("D2") + " %";
         }
+
+        private void comboBox_CameraModel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
         private int getBatteryLevel()
         {
             try
