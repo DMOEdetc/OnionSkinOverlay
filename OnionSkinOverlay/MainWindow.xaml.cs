@@ -31,7 +31,7 @@ namespace OnionSkinOverlay
     public partial class MainWindow : Window
     {
         #region --- Declarations ---
-        private NikonManager manager;
+        public NikonManager manager;
         private NikonDevice device;
         private Timer liveViewTimer, batteryTimer;
 
@@ -39,6 +39,8 @@ namespace OnionSkinOverlay
         private int imagecounter;
         string file_name = "";
         private bool device_ready = false;
+
+        public List<cameraModelList> ListDataCameraModel = new List<cameraModelList>();
 
         private Rect _location { get; set; }
         #endregion
@@ -61,25 +63,30 @@ namespace OnionSkinOverlay
             batteryTimer.Tick += new EventHandler(batteryTimer_Tick);
             batteryTimer.Interval = 30000;
 
-            // Initialize Nikon manager
-            bool is64 = Environment.Is64BitProcess;
+            ListDataCameraModel.Add(new cameraModelList { Id = 0, Value = "D90", md3 = "Type0003.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 1, Value = "One" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 2, Value = "Two" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 3, Value = "Three" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 4, Value = "Four" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 5, Value = "Five" });
 
-            String md3 = "";
+            comboBox_CameraModel.ItemsSource = ListDataCameraModel;
 
-            if (is64)
-            {
-                md3 = "Nikon SDK\\Binary Files\\x64\\Type0003.md3";
-            } else
-            {
-                md3 = "Nikon SDK\\Binary Files\\x86\\Type0003.md3";
-            }
+            comboBox_CameraModel.DisplayMemberPath = "Value";
+            comboBox_CameraModel.SelectedValuePath = "Id";
 
-            manager = new NikonManager(md3);
-            manager.DeviceAdded += new DeviceAddedDelegate(manager_DeviceAdded);
-            manager.DeviceRemoved += new DeviceRemovedDelegate(manager_DeviceRemoved);
+            comboBox_CameraModel.SelectedIndex = (int)Properties.Settings.Default["cameraModel"];
 
+            initializeSDK();
         }
-        #endregion  
+        public class cameraModelList
+        {
+            public int Id { get; set; }
+            public string Value { get; set; }
+            public string md3 { get; set; }
+        }
+
+        #endregion
 
         #region --- Properties ---
         private Rect DesktopArea
@@ -279,6 +286,37 @@ namespace OnionSkinOverlay
         #endregion
 
 
+        void initializeSDK()
+        {
+            // Initialize Nikon manager
+            bool is64 = Environment.Is64BitProcess;
+
+            String md3Path = "";
+
+            if (comboBox_CameraModel.SelectedIndex == -1)
+            {
+                comboBox_CameraModel.SelectedIndex = 0;
+            }
+            String md3 = ListDataCameraModel[comboBox_CameraModel.SelectedIndex].md3;
+
+
+
+
+            if (is64 && md3 != "")
+            {
+                md3Path = "Nikon SDK\\Binary Files\\x64\\" + md3;
+            }
+            else if (!is64 && md3 != "")
+            {
+                md3Path = "Nikon SDK\\Binary Files\\x86\\" + md3;
+            }
+
+            manager = new NikonManager(md3Path);
+            manager.DeviceAdded += new DeviceAddedDelegate(manager_DeviceAdded);
+            manager.DeviceRemoved += new DeviceRemovedDelegate(manager_DeviceRemoved);
+
+        }
+
         void device_CaptureComplete(NikonDevice sender, int data)
         {
             // Re-enable buttons when the capture completes
@@ -371,7 +409,7 @@ namespace OnionSkinOverlay
         private void checkbox_liveview_UnChecked(object sender, EventArgs e)
         {
             deaktivate_liveview();
-           
+
         }
         private void deaktivate_liveview()
         {
@@ -402,7 +440,7 @@ namespace OnionSkinOverlay
         //FolderCanger
         private void Button_ChangeFolderClick(object sender, RoutedEventArgs e)
         {
-            
+
             var dlg = new CommonOpenFileDialog();
             dlg.Title = "Zu überwachenden Ordner wählen...";
             dlg.IsFolderPicker = true;
@@ -452,8 +490,8 @@ namespace OnionSkinOverlay
                 {
                     try
                     {
-                        using (System.IO.File.Open(filetocheck.FullName,FileMode.Open, FileAccess.Read, FileShare.Read))
-                        ergebnis = true;
+                        using (System.IO.File.Open(filetocheck.FullName, FileMode.Open, FileAccess.Read, FileShare.Read))
+                            ergebnis = true;
                     }
                     catch (Exception)
                     {
@@ -571,7 +609,7 @@ namespace OnionSkinOverlay
 
                     }
                 }
-         
+
                 extension = ".jpg";
 
                 file_name = currentDirectory + "\\" + textBox_prefix.Text + mitte + suffix;
@@ -589,7 +627,7 @@ namespace OnionSkinOverlay
                 imageruncounter = 0;
             }
 
-            
+
             using (FileStream stream = new FileStream(file_name + extension, FileMode.Create, FileAccess.Write))
             {
                 stream.Write(image.Buffer, 0, image.Buffer.Length);
@@ -615,7 +653,7 @@ namespace OnionSkinOverlay
             }
         }
 
-        
+
         //Menü öffnen und Schließen
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
@@ -643,11 +681,13 @@ namespace OnionSkinOverlay
             if (battery_level < 50)
             {
                 label_battery.Foreground = System.Windows.Media.Brushes.Yellow;
-            } else if (battery_level < 15)
+            }
+            else if (battery_level < 15)
             {
                 label_battery.Foreground = System.Windows.Media.Brushes.Red;
 
-            } else if (battery_level > 50)
+            }
+            else if (battery_level > 50)
             {
                 label_battery.Foreground = System.Windows.Media.Brushes.White;
             }
@@ -656,7 +696,8 @@ namespace OnionSkinOverlay
 
         private void comboBox_CameraModel_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Properties.Settings.Default["cameraModel"] = comboBox_CameraModel.SelectedIndex;
+            Properties.Settings.Default.Save();
         }
 
         private int getBatteryLevel()

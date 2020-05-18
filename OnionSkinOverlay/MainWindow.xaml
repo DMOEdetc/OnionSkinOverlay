@@ -226,12 +226,8 @@
                 <ComboBoxItem Content="Datum" Foreground="Black"/>
                 <ComboBoxItem Content="Uhrzeit" Foreground="Black"/>
             </ComboBox>
-            <ComboBox x:Name="comboBox_CameraModel" Margin="0,263,10,9" VerticalAlignment="Stretch" SelectionChanged="comboBox_CameraModel_SelectionChanged" Foreground="White" Height="28" SelectedIndex="0" HorizontalAlignment="Right" Width="155" BorderBrush="#89FFFFFF">
-                <ComboBoxItem Content="D90" HorizontalAlignment="Left" Width="229"/>
-                <ComboBoxItem Content="123" HorizontalAlignment="Left" Width="229"/>
-                <ComboBoxItem Content="456" HorizontalAlignment="Left" Width="229"/>
-            </ComboBox>
-            <Label x:Name="Label_NikonType" Content="Nikon Type:" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" Width="71" Foreground="#DDFFFFFF"/>
+            <ComboBox x:Name="comboBox_CameraModel" Margin="0,263,10,9" VerticalAlignment="Stretch" SelectionChanged="comboBox_CameraModel_SelectionChanged" Foreground="White" Height="28" SelectedIndex="0" HorizontalAlignment="Right" Width="134" BorderBrush="#89FFFFFF"/>
+            <Label x:Name="Label_NikonType" Content="Nikon Modell:" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" Width="92" Foreground="#DDFFFFFF"/>
 
         </Grid>
 
