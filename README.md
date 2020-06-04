@@ -1,5 +1,9 @@
 # OnionSkinOverlay
 
+Dieses Projekt dient der bereitstellung von Möglichkeiten für Onionskinning. 
+
+## Changelog
+
 ##### *Version 0.1.1*
 - Added Setup Project
 - Redesigned GUI
