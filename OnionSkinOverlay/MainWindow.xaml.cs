@@ -1,4 +1,6 @@
-﻿using System;
+﻿//https://sourceforge.net/p/nikoncswrapper/wiki/Getting%20Started/
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -12,17 +14,38 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Configuration;
+using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using Nikon;
+using System.Reflection;
 
 namespace OnionSkinOverlay
 {
     public partial class MainWindow : Window
     {
         #region --- Declarations ---
+        public NikonManager manager;
+        private NikonDevice device;
+        private Timer liveViewTimer, batteryTimer;
+
+        private int imageruncounter = 0;
+        private int imagecounter;
+        string file_name = "";
+        private bool device_ready = false;
+
+        bool updatingUI = false;
+
+        public List<cameraModelList> ListDataCameraModel = new List<cameraModelList>();
+
         private Rect _location { get; set; }
         #endregion
 
@@ -30,7 +53,44 @@ namespace OnionSkinOverlay
         public MainWindow()
         {
             InitializeComponent();
+
+            // Disable buttons
+            device_ready = false;
+            ToggleButtons();
+
+            // Initialize live view timer
+            liveViewTimer = new Timer();
+            liveViewTimer.Tick += new EventHandler(LiveViewTimer_Tick);
+            liveViewTimer.Interval = 1000 / 30;
+
+            batteryTimer = new Timer();
+            batteryTimer.Tick += new EventHandler(BatteryTimer_Tick);
+            batteryTimer.Interval = 30000;
+
+            ListDataCameraModel.Add(new cameraModelList { Id = 0, Value = "D90", md3 = "Type0003.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 1, Value = "D850", md3 = "Type0022.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 2, Value = "D3", md3 = "Type0001.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 3, Value = "D6", md3 = "Type0027.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 4, Value = "DF", md3 = "Type0012.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 5, Value = "Nikon1 V3", md3 = "Type0019.md3" });
+            updatingUI = true;
+            comboBox_CameraModel.ItemsSource = ListDataCameraModel;
+            comboBox_CameraModel.DisplayMemberPath = "Value";
+            comboBox_CameraModel.SelectedValuePath = "Id";
+            comboBox_CameraModel.SelectedIndex = Convert.ToInt32(ConfigurationManager.AppSettings["cameraModel"]);
+            updatingUI = false;
+
+            ListDataCameraModel.ForEach(Console.WriteLine);
+
+            InitializeSDK();
         }
+        public class cameraModelList
+        {
+            public int Id { get; set; }
+            public string Value { get; set; }
+            public string md3 { get; set; }
+        }
+
         #endregion
 
         #region --- Properties ---
@@ -111,10 +171,10 @@ namespace OnionSkinOverlay
         {
             Thumb thumb = (Thumb)sender;
             int tag = Convert.ToInt32(thumb.Tag);
-            if (thumb.Cursor == Cursors.SizeWE) HandleSizeWE(tag, e);
-            if (thumb.Cursor == Cursors.SizeNS) HandleSizeNS(tag, e);
-            if (thumb.Cursor == Cursors.SizeNESW) HandleSizeNESW(tag, e);
-            if (thumb.Cursor == Cursors.SizeNWSE) HandleSizeNWSE(tag, e);
+            if (thumb.Cursor == System.Windows.Input.Cursors.SizeWE) HandleSizeWE(tag, e);
+            if (thumb.Cursor == System.Windows.Input.Cursors.SizeNS) HandleSizeNS(tag, e);
+            if (thumb.Cursor == System.Windows.Input.Cursors.SizeNESW) HandleSizeNESW(tag, e);
+            if (thumb.Cursor == System.Windows.Input.Cursors.SizeNWSE) HandleSizeNWSE(tag, e);
         }
 
         private void HandleSizeNWSE(int tag, DragDeltaEventArgs e)
@@ -172,6 +232,14 @@ namespace OnionSkinOverlay
         }
         #endregion
 
+        #region --- OnClose ---
+        protected override void OnClosed(EventArgs e)
+        {
+            manager.Shutdown();
+            base.OnClosed(e);
+        }
+        #endregion
+
         #region --- Event Handlers ---
         private void OnDragMoveWindow(Object sender, MouseButtonEventArgs e)
         {
@@ -200,10 +268,6 @@ namespace OnionSkinOverlay
             this.InternalWindowState = WindowState.Minimized;
         }
 
-        private void OnCloseWindow(Object sender, MouseButtonEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
 
         private void Window_StateChanged(object sender, EventArgs e)
         {
@@ -213,6 +277,12 @@ namespace OnionSkinOverlay
             }
         }
 
+        private void OnCloseWindow(Object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+
         private void Window_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (this.InternalWindowState != WindowState.Maximized)
@@ -221,11 +291,191 @@ namespace OnionSkinOverlay
         #endregion
 
 
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        void InitializeSDK()
         {
-            
+            // Initialize Nikon manager
+            bool is64 = Environment.Is64BitProcess;
+
+            String md3Path = "";
+
+            if (comboBox_CameraModel.SelectedIndex == -1)
+            {
+                updatingUI = true;
+                comboBox_CameraModel.SelectedIndex = 0;
+                updatingUI = false;
+            }
+            Console.WriteLine("Selected Modell: ", comboBox_CameraModel.SelectedIndex);
+            String md3 = ListDataCameraModel[comboBox_CameraModel.SelectedIndex].md3;
+            Console.WriteLine("Selected md3: ", md3);
+
+
+
+
+            if (is64 && md3 != "")
+            {
+                md3Path = "Nikon SDK\\Binary Files\\x64\\" + md3;
+            }
+            else if (!is64 && md3 != "")
+            {
+                md3Path = "Nikon SDK\\Binary Files\\x86\\" + md3;
+            }
+
+            Console.WriteLine("Camera Type changed. " + "Reload manager");
+
+            try
+            {
+                manager = new NikonManager(md3Path);
+                manager.DeviceAdded += new DeviceAddedDelegate(Manager_DeviceAdded);
+                manager.DeviceRemoved += new DeviceRemovedDelegate(manager_DeviceRemoved);
+            }
+
+            catch (NikonException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        void Device_CaptureComplete(NikonDevice sender, int data)
+        {
+            // Re-enable buttons when the capture completes
+            device_ready = true;
+            spinner_SavingImage.Visibility = Visibility.Hidden;
+            ToggleButtons();
+        }
+
+        void LiveViewTimer_Tick(object sender, EventArgs e)
+        {
+            // Get live view image
+            NikonLiveViewImage image = null;
+
+            try
+            {
+                image = device.GetLiveViewImage();
+            }
+            catch (NikonException)
+            {
+                liveViewTimer.Stop();
+            }
+
+            // Set live view image on picture box
+            if (image != null)
+            {
+                MemoryStream stream = new MemoryStream(image.JpegBuffer);
+
+                BitmapImage bi = new BitmapImage();
+                bi.BeginInit();
+                bi.StreamSource = stream;
+                bi.EndInit();
+                image_LiveView.Source = bi;
+
+            }
+        }
+
+        void manager_DeviceRemoved(NikonManager sender, NikonDevice device)
+        {
+            this.device = null;
+
+            // Stop live view timer
+            liveViewTimer.Stop();
+
+            // Clear device name
+            label_devicename.Content = "Kein Gerät verbunden";
+
+            // Disable buttons
+            device_ready = false;
+            ToggleButtons();
+            batteryTimer.Stop();
+
+            // Clear live view picture
+            image_LiveView.Source = null;
+        }
+
+        //Neues Gerät erkannt
+        void Manager_DeviceAdded(NikonManager sender, NikonDevice device)
+        {
+            this.device = device;
+
+            // Set the device name
+            label_devicename.Content = device.Name;
+
+            // Enable buttons
+            device_ready = true;
+            ToggleButtons();
+
+            //Enable Battery watcher
+            batteryTimer.Start();
+
+            // Hook up device capture events
+            device.ImageReady += new ImageReadyDelegate(Device_ImageReady);
+            device.CaptureComplete += new CaptureCompleteDelegate(Device_CaptureComplete);
+        }
+
+
+        //Buttons DeAktivieren
+        void ToggleButtons()
+        {
+            bool enabled = device_ready;
+            this.checkBox_liveview.IsEnabled = enabled;
+            if (currentDirectory == null) //Wenn Speicherort nicht gesetzt
+            {
+                enabled = false;
+            }
+            this.button_aufnahme.IsEnabled = enabled;
+        }
+
+
+        //LiveView Handler
+        private void Checkbox_LiveView_UnChecked(object sender, EventArgs e)
+        {
+            DeAktivate_LiveView();
+
+        }
+        private void DeAktivate_LiveView()
+        {
+            if (device == null)
+            {
+                return;
+            }
+
+            device.LiveViewEnabled = false;
+            liveViewTimer.Stop();
+            image_LiveView.Source = null;
+        }
+        private void Checkbox_LiveView_Checked(object sender, EventArgs e)
+        {
+            Aktivate_LiveView();
+        }
+        private void Aktivate_LiveView()
+        {
+            if (device == null)
+            {
+                return;
+            }
+
+            try
+            {
+                device.LiveViewEnabled = true;
+                liveViewTimer.Start();
+            }
+            catch (Exception e)
+            {
+                if (e is NikonException)
+                {
+                    checkBox_liveview.IsChecked = false;
+                    DeAktivate_LiveView();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+        }
+
+        //FolderCanger
+        private void Button_ChangeFolderClick(object sender, RoutedEventArgs e)
+        {
+
             var dlg = new CommonOpenFileDialog();
             dlg.Title = "Zu überwachenden Ordner wählen...";
             dlg.IsFolderPicker = true;
@@ -256,9 +506,10 @@ namespace OnionSkinOverlay
                 watcher.EnableRaisingEvents = true;
 
                 spinner_Scanning.Visibility = Visibility.Visible;
+
+                ToggleButtons();
             }
         }
-
         private void OnChangedFolder(object sender, FileSystemEventArgs e)
         {
             FileInfo filetocheck = new FileInfo(e.FullPath);
@@ -274,8 +525,8 @@ namespace OnionSkinOverlay
                 {
                     try
                     {
-                        using (System.IO.File.Open(filetocheck.FullName,FileMode.Open, FileAccess.Read, FileShare.Read))
-                        ergebnis = true;
+                        using (System.IO.File.Open(filetocheck.FullName, FileMode.Open, FileAccess.Read, FileShare.Read))
+                            ergebnis = true;
                     }
                     catch (Exception)
                     {
@@ -302,6 +553,137 @@ namespace OnionSkinOverlay
 
         }
 
+        private void Button_aufnahme_Click(object sender, RoutedEventArgs e)
+        {
+            DeAktivate_LiveView();
+            if (device == null)
+            {
+                return;
+            }
+
+            device_ready = false;
+            ToggleButtons();
+            spinner_SavingImage.Visibility = Visibility.Visible;
+
+            try
+            {
+                device.Capture();
+            }
+            catch (NikonException)
+            {
+                device_ready = true;
+                ToggleButtons();
+                spinner_SavingImage.Visibility = Visibility.Hidden;
+
+                if (checkBox_liveview.IsChecked == true)
+                {
+                    Aktivate_LiveView();
+                }
+            }
+
+            image_LiveView.Source = null;
+        }
+        async void Device_ImageReady(NikonDevice sender, NikonImage image)
+        {
+            string extension = "";
+
+            if (imageruncounter == 0)
+            {
+                string suffix = "";
+                string mitte = "";
+
+                //Mitte
+                if (comboBox_Filename_Mitte.SelectedItem != null)
+                {
+                    int itemindex = comboBox_Filename_Mitte.SelectedIndex;
+
+                    switch (itemindex)
+                    {
+                        case -1: // Nichts gewählt
+                            break;
+
+                        case 0: // Nummern  
+                            imagecounter = imagecounter + 1;
+                            mitte = imagecounter.ToString("D3");
+                            break;
+
+                        case 1: // Datum
+                            mitte = DateTime.Now.ToString("dd.MM.yyyy");
+                            break;
+
+                        case 2: // Urzeit
+                            mitte = DateTime.Now.ToString("HH.mm.ss");
+                            break;
+
+                    }
+                }
+
+                //Suffix
+                if (comboBox_Filename_Suffix.SelectedItem != null)
+                {
+                    int itemindex = comboBox_Filename_Suffix.SelectedIndex;
+
+                    switch (itemindex)
+                    {
+                        case -1: // Nichts gewählt
+                            break;
+
+                        case 0: // Nichts gewählt
+                            break;
+
+                        case 1: // Nummern  
+                            imagecounter = imagecounter + 1;
+                            mitte = imagecounter.ToString("D3");
+                            break;
+
+                        case 2: // Datum
+                            mitte = DateTime.Now.ToString("dd.MM.yyyy");
+                            break;
+
+                        case 3: // Urzeit
+                            mitte = DateTime.Now.ToString("HH.mm.ss");
+                            break;
+
+                    }
+                }
+
+                extension = ".jpg";
+
+                file_name = currentDirectory + "\\" + textBox_prefix.Text + mitte + suffix;
+
+                if (File.Exists(file_name + extension))
+                {
+                    file_name = currentDirectory + "\\" + textBox_prefix.Text + mitte + suffix + "_new_";
+                }
+
+                imageruncounter = 1;
+            }
+            else
+            {
+                extension = ".raw";
+                imageruncounter = 0;
+            }
+
+
+            using (FileStream stream = new FileStream(file_name + extension, FileMode.Create, FileAccess.Write))
+            {
+                stream.Write(image.Buffer, 0, image.Buffer.Length);
+            }
+
+
+            if (imageruncounter == 0 && checkBox_liveview.IsChecked == true)
+            {
+                while (!device_ready)
+                {
+                    Console.WriteLine("Device is busy");
+                    await Task.Delay(25);
+                }
+                Aktivate_LiveView();
+            }
+        }
+
+
+        //Always on Top Checkbox
         private void CheckBox_AlwaysOnTop_Checked(object sender, RoutedEventArgs e)
         {
             bool isChecked = (checkBox_AlwaysOnTop.IsChecked == true);
@@ -313,6 +695,87 @@ namespace OnionSkinOverlay
             {
                 this.Topmost = false;
             }
+        }
+
+
+        //Menü öffnen und Schließen
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ThicknessAnimation tahauptmenu = new ThicknessAnimation();
+            tahauptmenu.From = MainSettingsGrid.Margin;
+            tahauptmenu.To = new Thickness(0, 80, 260, 70);
+            tahauptmenu.Duration = new Duration(TimeSpan.FromMilliseconds(150));
+            MainSettingsGrid.BeginAnimation(Grid.MarginProperty, tahauptmenu);
+        }
+
+        private void ToggleButton_UnChecked(object sender, RoutedEventArgs e)
+        {
+            ThicknessAnimation tahauptmenu = new ThicknessAnimation();
+            tahauptmenu.From = MainSettingsGrid.Margin;
+            tahauptmenu.To = new Thickness(-260, 80, 0, 70);
+            tahauptmenu.Duration = new Duration(TimeSpan.FromMilliseconds(150));
+            MainSettingsGrid.BeginAnimation(Grid.MarginProperty, tahauptmenu);
+        }
+
+
+        //Battery Level
+        void BatteryTimer_Tick(object sender, EventArgs e)
+        {
+            int battery_level = GetBatteryLevel();
+            if (battery_level < 50)
+            {
+                label_battery.Foreground = System.Windows.Media.Brushes.Yellow;
+            }
+            else if (battery_level < 15)
+            {
+                label_battery.Foreground = System.Windows.Media.Brushes.Red;
+
+            }
+            else if (battery_level > 50)
+            {
+                label_battery.Foreground = System.Windows.Media.Brushes.White;
+            }
+            label_battery.Content = "Akku: " + battery_level.ToString("D2") + " %";
+        }
+
+        private void ComboBox_CameraModel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!updatingUI)
+            {
+                Save_Settings("cameraModel", comboBox_CameraModel.SelectedIndex.ToString());
+                Console.WriteLine("Selected Modell: " + comboBox_CameraModel.SelectedIndex.ToString());
+                InitializeSDK();
+            }
+        }
+
+        private int GetBatteryLevel()
+        {
+            try
+            {
+                int batteryLevel = device.GetInteger(eNkMAIDCapability.kNkMAIDCapability_BatteryLevel);
+                return batteryLevel;
+            }
+            catch (NikonException)
+            {
+                return 0;
+            }
+        }
+
+        //Speichern
+        private void Save_Settings(string key, string value)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(
+            System.Reflection.Assembly.GetExecutingAssembly().Location);
+            if (config.AppSettings.Settings[key] != null)
+            {
+                config.AppSettings.Settings[key].Value = value;
+            }
+            else
+            {
+                config.AppSettings.Settings.Add(key, value);
+            }
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
     }
 }
