@@ -191,6 +191,8 @@
             <!-- Content -->
             <Image x:Name="image_LiveView" Margin="0,15,0,10" Grid.Row="1" Grid.ColumnSpan="3" Panel.ZIndex="-3"/>
             <Image x:Name="image_OnionLayer" Margin="0,15,0,10" Grid.Row="1" Grid.ColumnSpan="3" Opacity="{Binding Value, ElementName=slider_ImageTransparency}" Panel.ZIndex="-2"/>
+            <fa:ImageAwesome x:Name="spinner_SavingImage" Margin="337,163" Icon="CircleOutlineNotch" Spin="true" SpinDuration="2" RenderTransformOrigin="0.5,0.5" Foreground="White" Visibility="Hidden" Panel.ZIndex="50" Grid.Row="1" Grid.Column="1" />
+
             <ToggleButton 
                 Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
                 IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" 

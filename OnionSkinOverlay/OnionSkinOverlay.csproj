@@ -171,17 +171,41 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Nikon SDK\Binary Files\x64\Type0003.md3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Nikon SDK\Binary Files\x64\Type0001.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Nikon SDK\Binary Files\x64\Type0025.md3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Nikon SDK\Binary Files\x64\Type0003.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nikon SDK\Binary Files\x64\Type0012.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nikon SDK\Binary Files\x64\Type0019.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nikon SDK\Binary Files\x64\Type0022.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nikon SDK\Binary Files\x64\Type0027.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nikon SDK\Binary Files\x86\Type0001.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Nikon SDK\Binary Files\x86\Type0003.md3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Nikon SDK\Binary Files\x86\Type0025.md3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Nikon SDK\Binary Files\x86\Type0012.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nikon SDK\Binary Files\x86\Type0019.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nikon SDK\Binary Files\x86\Type0022.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nikon SDK\Binary Files\x86\Type0027.md3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="OnionSkinOverlay_TemporaryKey.pfx" />
     <None Include="packages.config" />
@@ -210,10 +234,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Nikon SDK\Binary Files\x64\NkdPTP.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Nikon SDK\Binary Files\x86\NkdPTP.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

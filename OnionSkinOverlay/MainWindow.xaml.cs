@@ -26,6 +26,7 @@ using System.Configuration;
 using System.Windows.Forms;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Nikon;
+using System.Reflection;
 
 namespace OnionSkinOverlay
 {
@@ -67,11 +68,11 @@ namespace OnionSkinOverlay
             batteryTimer.Interval = 30000;
 
             ListDataCameraModel.Add(new cameraModelList { Id = 0, Value = "D90", md3 = "Type0003.md3" });
-            ListDataCameraModel.Add(new cameraModelList { Id = 1, Value = "One", md3 = "Type0003.md3" });
-            ListDataCameraModel.Add(new cameraModelList { Id = 2, Value = "Two", md3 = "Type0003.md3" });
-            ListDataCameraModel.Add(new cameraModelList { Id = 3, Value = "Three", md3 = "Type0003.md3" });
-            ListDataCameraModel.Add(new cameraModelList { Id = 4, Value = "Four", md3 = "Type0003.md3" });
-            ListDataCameraModel.Add(new cameraModelList { Id = 5, Value = "Five", md3 = "Type0003.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 1, Value = "D850", md3 = "Type0022.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 2, Value = "D3", md3 = "Type0001.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 3, Value = "D6", md3 = "Type0027.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 4, Value = "DF", md3 = "Type0012.md3" });
+            ListDataCameraModel.Add(new cameraModelList { Id = 5, Value = "Nikon1 V3", md3 = "Type0019.md3" });
             updatingUI = true;
             comboBox_CameraModel.ItemsSource = ListDataCameraModel;
             comboBox_CameraModel.DisplayMemberPath = "Value";
@@ -339,6 +340,7 @@ namespace OnionSkinOverlay
         {
             // Re-enable buttons when the capture completes
             device_ready = true;
+            spinner_SavingImage.Visibility = Visibility.Hidden;
             ToggleButtons();
         }
 
@@ -414,11 +416,11 @@ namespace OnionSkinOverlay
         void ToggleButtons()
         {
             bool enabled = device_ready;
+            this.checkBox_liveview.IsEnabled = enabled;
             if (currentDirectory == null) //Wenn Speicherort nicht gesetzt
             {
                 enabled = false;
             }
-            this.checkBox_liveview.IsEnabled = enabled;
             this.button_aufnahme.IsEnabled = enabled;
         }
 
@@ -451,8 +453,23 @@ namespace OnionSkinOverlay
                 return;
             }
 
-            device.LiveViewEnabled = true;
-            liveViewTimer.Start();
+            try
+            {
+                device.LiveViewEnabled = true;
+                liveViewTimer.Start();
+            }
+            catch (Exception e)
+            {
+                if (e is NikonException)
+                {
+                    checkBox_liveview.IsChecked = false;
+                    DeAktivate_LiveView();
+                }
+                else
+                {
+                    throw;
+                }
+            }
         }
 
         //FolderCanger
@@ -546,6 +563,7 @@ namespace OnionSkinOverlay
 
             device_ready = false;
             ToggleButtons();
+            spinner_SavingImage.Visibility = Visibility.Visible;
 
             try
             {
@@ -555,6 +573,7 @@ namespace OnionSkinOverlay
             {
                 device_ready = true;
                 ToggleButtons();
+                spinner_SavingImage.Visibility = Visibility.Hidden;
 
                 if (checkBox_liveview.IsChecked == true)
                 {
@@ -564,7 +583,7 @@ namespace OnionSkinOverlay
 
             image_LiveView.Source = null;
         }
-        void Device_ImageReady(NikonDevice sender, NikonImage image)
+        async void Device_ImageReady(NikonDevice sender, NikonImage image)
         {
             string extension = "";
 
@@ -651,11 +670,18 @@ namespace OnionSkinOverlay
                 stream.Write(image.Buffer, 0, image.Buffer.Length);
             }
 
+
             if (imageruncounter == 0 && checkBox_liveview.IsChecked == true)
             {
+                while (!device_ready)
+                {
+                    Console.WriteLine("Device is busy");
+                    await Task.Delay(25);
+                }
                 Aktivate_LiveView();
             }
         }
+
 
         //Always on Top Checkbox
         private void CheckBox_AlwaysOnTop_Checked(object sender, RoutedEventArgs e)
@@ -718,7 +744,7 @@ namespace OnionSkinOverlay
             {
                 Save_Settings("cameraModel", comboBox_CameraModel.SelectedIndex.ToString());
                 Console.WriteLine("Selected Modell: " + comboBox_CameraModel.SelectedIndex.ToString());
-                //InitializeSDK();
+                InitializeSDK();
             }
         }
 
