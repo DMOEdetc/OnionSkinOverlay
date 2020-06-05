@@ -204,31 +204,37 @@
         </Grid>
         <!-- Sidemenü -->
         <Grid x:Name="MainSettingsGrid" HorizontalAlignment="Left" Margin="-260,80,0,70" Width="251" Background="#FF07215E" Panel.ZIndex="50">
-            <Grid.ContextMenu>
-                <ContextMenu/>
-            </Grid.ContextMenu>
-            <Button x:Name="button" Content="Bilderordner wählen..." Click="Button_ChangeFolderClick"  Height="25" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="10,42,10,233"/>
-            <Label x:Name="label1" Content="Einstellungen:" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.046,-0.014" Width="161" HorizontalAlignment="Left" Foreground="#DDFFFFFF" FontSize="14" FontWeight="Bold"/>
-            <CheckBox x:Name="checkBox_liveview" Checked="Checkbox_LiveView_Checked" Unchecked="Checkbox_LiveView_UnChecked" Content="LiveView aktivieren" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" Width="231" Height="19" Foreground="White"/>
-            <Label x:Name="label_devicename" Content="Kein Gerät verbunden" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="231" Background="#00000000" Foreground="#DDFFFFFF"/>
-            <TextBox x:Name="textBox_prefix" HorizontalAlignment="Left" Height="25" Margin="86,161,0,0" TextWrapping="Wrap" Text="IMG_" VerticalAlignment="Top" Width="155" Foreground="White" BorderBrush="#89FFFFFF"/>
-            <Label x:Name="label2" Content="Dateinamen:" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" Width="231"/>
-            <Label x:Name="label3" Content="Präfix:" HorizontalAlignment="Left" Margin="29,161,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
-            <Label x:Name="label3_Copy" Content="Mitte" HorizontalAlignment="Left" Margin="29,194,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
-            <ComboBox x:Name="comboBox_Filename_Mitte" HorizontalAlignment="Left" Margin="86,195,0,0" VerticalAlignment="Top" Width="155" Foreground="#FF07215E" BorderBrush="#89FFFFFF" SelectedIndex="0" Background="White">
-                <ComboBoxItem  Content="Nummerrieren" Foreground="Black"/>
-                <ComboBoxItem Content="Datum" Foreground="Black"/>
-                <ComboBoxItem Content="Uhrzeit" Foreground="Black"/>
-            </ComboBox>
-            <Label x:Name="label3_Copy1" Content="Suffix:" HorizontalAlignment="Left" Margin="29,223,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
-            <ComboBox x:Name="comboBox_Filename_Suffix" HorizontalAlignment="Left" Margin="86,224,0,0" VerticalAlignment="Top" Width="155" Foreground="#FF07215E" BorderBrush="#89FFFFFF" SelectedIndex="0" Background="White">
-                <ComboBoxItem Content="Kein Suffix"/>
-                <ComboBoxItem  Content="Nummerrieren" Foreground="Black"/>
-                <ComboBoxItem Content="Datum" Foreground="Black"/>
-                <ComboBoxItem Content="Uhrzeit" Foreground="Black"/>
-            </ComboBox>
-            <ComboBox x:Name="comboBox_CameraModel" Margin="0,263,10,9" VerticalAlignment="Stretch" SelectionChanged="ComboBox_CameraModel_SelectionChanged" Foreground="White" Height="28" HorizontalAlignment="Right" Width="134" BorderBrush="#89FFFFFF" IsSynchronizedWithCurrentItem="False" SelectedIndex="0"/>
-            <Label x:Name="Label_NikonType" Content="Nikon Modell:" HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" Width="92" Foreground="#DDFFFFFF"/>
+            <ScrollViewer>
+                <StackPanel>
+
+                    <Label x:Name="label1" Content="Einstellungen:" Margin="10,15,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.046,-0.014" Width="161" HorizontalAlignment="Left" Foreground="#DDFFFFFF" FontSize="14" FontWeight="Bold"/>
+                    <Button x:Name="button" Content="Bilderordner wählen..." Click="Button_ChangeFolderClick"  Height="25" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="10,15,10,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="checkBox_liveview" Checked="Checkbox_LiveView_Checked" Unchecked="Checkbox_LiveView_UnChecked" Content="LiveView aktivieren" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="231" Height="19" Foreground="White"/>
+                    <Label x:Name="label_devicename" Content="Kein Gerät verbunden" Margin="10,15,0,0" VerticalAlignment="Top" Width="212" Background="#00000000" Foreground="#DDFFFFFF" HorizontalAlignment="Left"/>
+                    <DockPanel>
+
+                    </DockPanel>
+                    <TextBox x:Name="textBox_prefix" HorizontalAlignment="Left" Height="25" Margin="86,15,0,0" TextWrapping="Wrap" Text="IMG_" VerticalAlignment="Top" Width="155" Foreground="White" BorderBrush="#89FFFFFF"/>
+                    <Label x:Name="label2" Content="Dateinamen:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" Width="231"/>
+                    <Label x:Name="label3" Content="Präfix:" HorizontalAlignment="Left" Margin="29,15,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                    <Label x:Name="label3_Copy" Content="Mitte" HorizontalAlignment="Left" Margin="29,15,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                    <ComboBox x:Name="comboBox_Filename_Mitte" HorizontalAlignment="Left" Margin="86,15,0,0" VerticalAlignment="Top" Width="155" Foreground="#FF07215E" BorderBrush="#89FFFFFF" SelectedIndex="0" Background="White">
+                        <ComboBoxItem  Content="Nummerrieren" Foreground="Black"/>
+                        <ComboBoxItem Content="Datum" Foreground="Black"/>
+                        <ComboBoxItem Content="Uhrzeit" Foreground="Black"/>
+                    </ComboBox>
+                    <Label x:Name="label3_Copy1" Content="Suffix:" HorizontalAlignment="Left" Margin="29,15,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                    <ComboBox x:Name="comboBox_Filename_Suffix" HorizontalAlignment="Left" Margin="86,15,0,0" VerticalAlignment="Top" Width="155" Foreground="#FF07215E" BorderBrush="#89FFFFFF" SelectedIndex="0" Background="White">
+                        <ComboBoxItem Content="Kein Suffix"/>
+                        <ComboBoxItem  Content="Nummerrieren" Foreground="Black"/>
+                        <ComboBoxItem Content="Datum" Foreground="Black"/>
+                        <ComboBoxItem Content="Uhrzeit" Foreground="Black"/>
+                    </ComboBox>
+                    <ComboBox x:Name="comboBox_CameraModel" Margin="0,15,10,0" VerticalAlignment="Stretch" SelectionChanged="ComboBox_CameraModel_SelectionChanged" Foreground="White" Height="28" HorizontalAlignment="Right" Width="134" BorderBrush="#89FFFFFF" IsSynchronizedWithCurrentItem="False" SelectedIndex="0"/>
+                    <Label x:Name="Label_NikonType" Content="Nikon Modell:" HorizontalAlignment="Left" Margin="10,15,0,15" VerticalAlignment="Top" Width="92" Foreground="#DDFFFFFF"/>
+
+                </StackPanel>
+            </ScrollViewer>
 
         </Grid>
 
