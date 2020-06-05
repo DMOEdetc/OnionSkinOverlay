@@ -439,7 +439,7 @@ namespace OnionSkinOverlay
             this.device = device;
 
             // Set the device name
-            label_devicename.Content = device.Name;
+            label_devicename.Content = "Erkanntes Modell: " + device.Name;
 
             // Enable buttons
             device_ready = true;
@@ -544,6 +544,7 @@ namespace OnionSkinOverlay
                 currentDirectory = folder;
                 Console.WriteLine("Ordner zu " + currentDirectory + " geändert");
                 FileSystemWatcher watcher = new FileSystemWatcher();
+                label_imageFodlerPath.Content = "Ordner: " + folder;
                 watcher.Path = folder;
                 //watcher.NotifyFilter = NotifyFilters.LastWrite;  //Nicht nötig
                 watcher.Filter = "*.*";
