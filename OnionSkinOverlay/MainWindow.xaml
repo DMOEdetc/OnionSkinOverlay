@@ -32,7 +32,7 @@
                     <StackPanel Orientation="Horizontal" Margin="2,2,0,2" HorizontalAlignment="Left">
                         <Image x:Name="image" Height="32" Width="40" DockPanel.Dock="Left" Margin="2" RenderTransformOrigin="-16.292,0.5" Source="icon.png"/>
                         <Label MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Margin="8 0 0 0" FontSize="12" VerticalContentAlignment="Center" Content="{Binding Path=Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}, FallbackValue='Main Window'}" Background="#00000000" Foreground="White" />
-                        <Label x:Name="label_Version" MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Margin="0,5,0,0" Content="Version: 0.1.2" RenderTransformOrigin="1.711,0.538" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#00000000" Foreground="#FF424242"/>
+                        <Label x:Name="label_Version" MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Margin="0,5,0,0" Content="Version: 1.0.0" RenderTransformOrigin="1.711,0.538" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#00000000" Foreground="#FF424242"/>
                     </StackPanel>
                     <Label MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Background="#00000000" Margin="0,2" MinWidth="800"/>
 
