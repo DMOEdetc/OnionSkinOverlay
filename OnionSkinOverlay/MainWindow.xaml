@@ -15,7 +15,7 @@
         WindowStyle="None"
         Topmost="True"
         StateChanged="Window_StateChanged" 
-        PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown">
+        PreviewMouseLeftButtonDown="Window_PreviewMouseLeftButtonDown" MinWidth="800" MinHeight="450">
 
     <Window.Effect>
         <DropShadowEffect/>
@@ -34,7 +34,7 @@
                         <Label MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Margin="8 0 0 0" FontSize="12" VerticalContentAlignment="Center" Content="{Binding Path=Title, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}, FallbackValue='Main Window'}" Background="#00000000" Foreground="White" />
                         <Label x:Name="label_Version" MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Margin="0,5,0,0" Content="Version: 0.1.1" RenderTransformOrigin="1.711,0.538" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#00000000" Foreground="#FF424242"/>
                     </StackPanel>
-                    <Label MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Background="#00000000" Margin="0,2"/>
+                    <Label MouseLeftButtonDown="OnDragMoveWindow" MouseDoubleClick="OnMaximizeWindow" Background="#00000000" Margin="0,2" MinWidth="800"/>
 
                     <!-- WindowControls -->
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" Margin="2" HorizontalAlignment="Right">
@@ -98,7 +98,7 @@
                 </Grid>
             </DockPanel>
 
-            <Grid Background="#FF07215E" DockPanel.Dock="Bottom" Height="32">
+            <Grid Background="#FF07215E" DockPanel.Dock="Bottom" Height="32" MinWidth="800">
                 <!--Bottom Controls Area-->
 
                 <Slider x:Name="slider_ImageTransparency" Value="0.5" TickFrequency="0.05" IsSnapToTickEnabled="True" RenderTransformOrigin="1.183,-1.467" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="200" Margin="0,0,166,5" LargeChange="0.05" Maximum="1"/>
@@ -106,7 +106,7 @@
                 <Label x:Name="label" HorizontalContentAlignment="Left" Content="{Binding Value, ElementName=slider_ImageTransparency}" Margin="0,0,57,5" ContentStringFormat="" RenderTransformOrigin="0.529,-0.24" HorizontalAlignment="Right" Height="22" VerticalAlignment="Bottom" Foreground="White" Width="35"/>
                 <CheckBox x:Name="checkBox_AlwaysOnTop" Content="Immer im Vordergrund" HorizontalAlignment="Left" Margin="19,3,0,0" VerticalAlignment="Top" Foreground="White" Unchecked="CheckBox_AlwaysOnTop_Checked" Checked="CheckBox_AlwaysOnTop_Checked" IsChecked="True" Height="27"/>
                 <Button x:Name="button_aufnahme" Content="Auslöser" Click="Button_aufnahme_Click" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="194,5,506,5" AutomationProperties.IsColumnHeader="True" Height="Auto" Width="100"/>
-                <fa:ImageAwesome x:Name="spinner_Scanning" Width="20" Height="20" Margin="0,0,20,6" Icon="CircleOutlineNotch" Spin="true" SpinDuration="4" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" Visibility="Hidden" />
+                <fa:ImageAwesome x:Name="spinner_Scanning" Width="20" Height="20" Margin="0,0,40,6" Icon="CircleOutlineNotch" Spin="true" SpinDuration="4" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White" Visibility="Hidden" />
                 <Label x:Name="label_battery" Content="" HorizontalAlignment="Left" Margin="309,5,0,0" VerticalAlignment="Top" Width="111" Foreground="#DDFFFFFF"/>
             </Grid>
 
@@ -171,9 +171,9 @@
             </DockPanel>
 
             <!-- Bottom/Right Drag/Snap -->
-            <DockPanel LastChildFill="False" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="743,0,5,5" RenderTransformOrigin="0.016,0.06" HorizontalAlignment="Left" Width="32" Height="25" VerticalAlignment="Top">
-                <Thumb DockPanel.Dock="Right" Width="4" Cursor="SizeNWSE" Tag="1" DragDelta="Thumb_DragDelta" />
-                <Thumb DockPanel.Dock="Bottom" Height="4" Cursor="SizeNWSE" Tag="1" DragDelta="Thumb_DragDelta" />
+            <DockPanel LastChildFill="False" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                <Thumb DockPanel.Dock="Right" Width="4" Cursor="SizeNWSE" Tag="1" DragDelta="Thumb_DragDelta" HorizontalAlignment="Right" Height="20" />
+                <Thumb DockPanel.Dock="Bottom" Height="4" Cursor="SizeNWSE" Tag="1" DragDelta="Thumb_DragDelta" Margin="0,0,10,0"/>
             </DockPanel>
 
             <!-- Left Drag/Snap -->
@@ -191,7 +191,7 @@
             <!-- Content -->
             <Image x:Name="image_LiveView" Margin="0,15,0,10" Grid.Row="1" Grid.ColumnSpan="3" Panel.ZIndex="-3"/>
             <Image x:Name="image_OnionLayer" Margin="0,15,0,10" Grid.Row="1" Grid.ColumnSpan="3" Opacity="{Binding Value, ElementName=slider_ImageTransparency}" Panel.ZIndex="-2"/>
-            <fa:ImageAwesome x:Name="spinner_SavingImage" Margin="337,163" Icon="CircleOutlineNotch" Spin="true" SpinDuration="2" RenderTransformOrigin="0.5,0.5" Foreground="White" Visibility="Hidden" Panel.ZIndex="50" Grid.Row="1" Grid.Column="1" />
+            <fa:ImageAwesome x:Name="spinner_MainWindowCenter" Margin="337,163" Icon="CircleOutlineNotch" Spin="true" SpinDuration="2" RenderTransformOrigin="0.5,0.5" Foreground="White" Visibility="Hidden" Panel.ZIndex="50" Grid.Row="1" Grid.Column="1" />
 
             <ToggleButton 
                 Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
