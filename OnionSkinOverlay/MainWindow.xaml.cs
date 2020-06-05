@@ -33,6 +33,11 @@ namespace OnionSkinOverlay
     public partial class MainWindow : Window
     {
         #region --- Declarations ---
+        // Fest
+        static int min_width = 800;
+        static int min_height = 450;
+
+        // Allgmein
         public NikonManager manager;
         private NikonDevice device;
         private Timer liveViewTimer, batteryTimer;
@@ -181,15 +186,27 @@ namespace OnionSkinOverlay
         {
             if (tag == 0)
             {
-                this.Top += e.VerticalChange;
-                this.Height -= e.VerticalChange;
-                this.Left += e.HorizontalChange;
-                this.Width -= e.HorizontalChange;
+                if (min_width <= this.Width - e.HorizontalChange)
+                {
+                    this.Left += e.HorizontalChange;
+                    this.Width -= e.HorizontalChange;
+                }
+                if (min_height <= this.Height - e.VerticalChange)
+                {
+                    this.Top += e.VerticalChange;
+                    this.Height -= e.VerticalChange;
+                }
             }
             else
             {
-                this.Width += e.HorizontalChange;
-                this.Height += e.VerticalChange;
+                if (min_width <= this.Width + e.HorizontalChange)
+                {
+                    this.Width += e.HorizontalChange;
+                }
+                if (min_height <= this.Height + e.VerticalChange)
+                {
+                    this.Height += e.VerticalChange;
+                }
             }
         }
 
@@ -197,15 +214,28 @@ namespace OnionSkinOverlay
         {
             if (tag == 0)
             {
-                this.Top += e.VerticalChange;
-                this.Height -= e.VerticalChange;
-                this.Width += e.HorizontalChange;
+
+                if (min_width <= this.Width + e.HorizontalChange)
+                {
+                    this.Width += e.HorizontalChange;
+                }
+                if (min_height <= this.Height - e.VerticalChange)
+                {
+                    this.Top += e.VerticalChange;
+                    this.Height -= e.VerticalChange;
+                }
             }
             else
             {
-                this.Left += e.HorizontalChange;
-                this.Width -= e.HorizontalChange;
-                this.Height += e.VerticalChange;
+                if (min_width <= this.Width - e.HorizontalChange)
+                {
+                    this.Left += e.HorizontalChange;
+                    this.Width -= e.HorizontalChange;
+                }
+                if (min_height <= this.Height + e.VerticalChange)
+                {
+                    this.Height += e.VerticalChange;
+                }
             }
         }
 
@@ -213,22 +243,34 @@ namespace OnionSkinOverlay
         {
             if (tag == 0)
             {
-                this.Top += e.VerticalChange;
-                this.Height -= e.VerticalChange;
+                if (min_height <= this.Height - e.VerticalChange)
+                {
+                    this.Top += e.VerticalChange;
+                    this.Height -= e.VerticalChange;
+                }
             }
-            else
+            else if (min_height <= this.Height + e.VerticalChange)
+            {
                 this.Height += e.VerticalChange;
+            }
         }
 
         private void HandleSizeWE(int tag, DragDeltaEventArgs e)
         {
             if (tag == 0)
             {
-                this.Left += e.HorizontalChange;
-                this.Width -= e.HorizontalChange;
+                if (min_width <= this.Width - e.HorizontalChange)
+                {
+                    this.Left += e.HorizontalChange;
+                    this.Width -= e.HorizontalChange;
+                }
+
             }
-            else
+            else if (min_width <= this.Width + e.HorizontalChange)
+            {
                 this.Width += e.HorizontalChange;
+            }
+
         }
         #endregion
 
@@ -340,7 +382,7 @@ namespace OnionSkinOverlay
         {
             // Re-enable buttons when the capture completes
             device_ready = true;
-            spinner_SavingImage.Visibility = Visibility.Hidden;
+            spinner_MainWindowCenter.Visibility = Visibility.Hidden;
             ToggleButtons();
         }
 
@@ -462,8 +504,13 @@ namespace OnionSkinOverlay
             {
                 if (e is NikonException)
                 {
-                    checkBox_liveview.IsChecked = false;
+                    spinner_MainWindowCenter.Visibility = Visibility.Visible;
                     DeAktivate_LiveView();
+                    HelperClass.DelayAction(500, new Action(() =>
+                    {
+                        Aktivate_LiveView();
+                        spinner_MainWindowCenter.Visibility = Visibility.Hidden;
+                    }));
                 }
                 else
                 {
@@ -563,7 +610,7 @@ namespace OnionSkinOverlay
 
             device_ready = false;
             ToggleButtons();
-            spinner_SavingImage.Visibility = Visibility.Visible;
+            spinner_MainWindowCenter.Visibility = Visibility.Visible;
 
             try
             {
@@ -573,7 +620,7 @@ namespace OnionSkinOverlay
             {
                 device_ready = true;
                 ToggleButtons();
-                spinner_SavingImage.Visibility = Visibility.Hidden;
+                spinner_MainWindowCenter.Visibility = Visibility.Hidden;
 
                 if (checkBox_liveview.IsChecked == true)
                 {
@@ -742,7 +789,7 @@ namespace OnionSkinOverlay
         {
             if (!updatingUI)
             {
-                Save_Settings("cameraModel", comboBox_CameraModel.SelectedIndex.ToString());
+                HelperClass.Save_Settings("cameraModel", comboBox_CameraModel.SelectedIndex.ToString());
                 Console.WriteLine("Selected Modell: " + comboBox_CameraModel.SelectedIndex.ToString());
                 InitializeSDK();
             }
@@ -759,23 +806,6 @@ namespace OnionSkinOverlay
             {
                 return 0;
             }
-        }
-
-        //Speichern
-        private void Save_Settings(string key, string value)
-        {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(
-            System.Reflection.Assembly.GetExecutingAssembly().Location);
-            if (config.AppSettings.Settings[key] != null)
-            {
-                config.AppSettings.Settings[key].Value = value;
-            }
-            else
-            {
-                config.AppSettings.Settings.Add(key, value);
-            }
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
         }
     }
 }
