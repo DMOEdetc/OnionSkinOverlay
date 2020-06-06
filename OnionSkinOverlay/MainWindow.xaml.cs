@@ -42,8 +42,9 @@ namespace OnionSkinOverlay
         private NikonDevice device;
         private Timer liveViewTimer, batteryTimer;
 
+        private int imagecounter1;
+        private int imagecounter2;
         private int imageruncounter = 0;
-        private int imagecounter;
         string file_name = "";
         private bool device_ready = false;
 
@@ -88,6 +89,7 @@ namespace OnionSkinOverlay
             ListDataCameraModel.ForEach(Console.WriteLine);
 
             InitializeSDK();
+            updateFileNamePreview();
         }
         public class cameraModelList
         {
@@ -634,74 +636,42 @@ namespace OnionSkinOverlay
         async void Device_ImageReady(NikonDevice sender, NikonImage image)
         {
             string extension = "";
+            int itemindexseperator = 0;
+            int itemindexmitte = 0;
+            int itemindexsuffix = 0;
+
 
             if (imageruncounter == 0)
             {
-                string suffix = "";
-                string mitte = "";
+
+                //Seperator
+                if (comboBox_Filename_Seperator != null && comboBox_Filename_Seperator.SelectedItem != null)
+                {
+                    itemindexseperator = comboBox_Filename_Seperator.SelectedIndex;
+                }
 
                 //Mitte
                 if (comboBox_Filename_Mitte.SelectedItem != null)
                 {
-                    int itemindex = comboBox_Filename_Mitte.SelectedIndex;
-
-                    switch (itemindex)
-                    {
-                        case -1: // Nichts gewählt
-                            break;
-
-                        case 0: // Nummern  
-                            imagecounter = imagecounter + 1;
-                            mitte = imagecounter.ToString("D3");
-                            break;
-
-                        case 1: // Datum
-                            mitte = DateTime.Now.ToString("dd.MM.yyyy");
-                            break;
-
-                        case 2: // Urzeit
-                            mitte = DateTime.Now.ToString("HH.mm.ss");
-                            break;
-
-                    }
+                    itemindexmitte = comboBox_Filename_Mitte.SelectedIndex;
                 }
 
                 //Suffix
                 if (comboBox_Filename_Suffix.SelectedItem != null)
                 {
-                    int itemindex = comboBox_Filename_Suffix.SelectedIndex;
+                    itemindexsuffix = comboBox_Filename_Suffix.SelectedIndex;
 
-                    switch (itemindex)
-                    {
-                        case -1: // Nichts gewählt
-                            break;
-
-                        case 0: // Nichts gewählt
-                            break;
-
-                        case 1: // Nummern  
-                            imagecounter = imagecounter + 1;
-                            mitte = imagecounter.ToString("D3");
-                            break;
-
-                        case 2: // Datum
-                            mitte = DateTime.Now.ToString("dd.MM.yyyy");
-                            break;
-
-                        case 3: // Urzeit
-                            mitte = DateTime.Now.ToString("HH.mm.ss");
-                            break;
-
-                    }
                 }
 
                 extension = ".jpg";
 
-                file_name = currentDirectory + "\\" + textBox_prefix.Text + mitte + suffix;
+                string tempFileName = getFileName(textBox_prefix.Text, itemindexseperator, itemindexmitte, itemindexsuffix, false);
+
+                file_name = currentDirectory + "\\" + tempFileName;
 
                 if (File.Exists(file_name + extension))
                 {
-                    file_name = currentDirectory + "\\" + textBox_prefix.Text + mitte + suffix + "_new_";
+                    file_name = currentDirectory + "\\" + tempFileName + "_new_";
                 }
 
                 imageruncounter = 1;
@@ -795,6 +765,153 @@ namespace OnionSkinOverlay
                 InitializeSDK();
             }
         }
+
+        private void textBox_prefix_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            updateFileNamePreview();
+        }
+
+        private void comboBox_FilenamePreviewSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            updateFileNamePreview();
+        }
+        private void updateFileNamePreview()
+        {
+
+            int itemindexseperator = 0;
+            int itemindexmitte = 0;
+            int itemindexsuffix = 0;
+
+            if (label_PreviewFileName != null)
+            {
+
+                //Seperator
+                if (comboBox_Filename_Seperator != null && comboBox_Filename_Seperator.SelectedItem != null)
+                {
+                    itemindexseperator = comboBox_Filename_Seperator.SelectedIndex;
+                }
+
+                //Mitte
+                if (comboBox_Filename_Mitte != null && comboBox_Filename_Mitte.SelectedItem != null)
+                {
+                    itemindexmitte = comboBox_Filename_Mitte.SelectedIndex;
+                }
+
+                //Suffix
+                if (comboBox_Filename_Suffix != null && comboBox_Filename_Suffix.SelectedItem != null)
+                {
+                    itemindexsuffix = comboBox_Filename_Suffix.SelectedIndex;
+
+                }
+
+                string tempFileName = getFileName(textBox_prefix.Text, itemindexseperator, itemindexmitte, itemindexsuffix, true);
+                label_PreviewFileName.Content = tempFileName;
+            }
+        }
+
+
+
+        //Filename generieren
+        public string getFileName(string prefix, int seperatorindex, int mitteindex, int suffixindex, bool isSimulated)
+        {
+            string mitte = "";
+            string suffix = "";
+            string seperator = "";
+
+
+            //Seperator
+            switch (seperatorindex)
+            {
+                case -1: // Nichts gewählt
+                    break;
+
+                case 0: // Nichts gewählt
+                    break;
+
+                case 1: // .  
+                    seperator = ".";
+                    break;
+
+                case 2: // -
+                    seperator = "-";
+                    break;
+
+                case 3: // _
+                    seperator = "_";
+                    break;
+
+                case 4: //  
+                    seperator = " ";
+                    break;
+
+            }
+
+
+            //Mitte
+            switch (mitteindex)
+            {
+                case -1: // Nichts gewählt
+                    break;
+
+                case 0: // Nummern  
+                    if (isSimulated)
+                    {
+                        mitte = seperator + "001";
+                    }
+                    else
+                    {
+                        imagecounter1 = imagecounter1 + 1;
+                        mitte = seperator + imagecounter1.ToString("D3");
+                    }
+                    break;
+
+                case 1: // Datum
+                    mitte = seperator + DateTime.Now.ToString("dd.MM.yyyy");
+                    break;
+
+                case 2: // Urzeit
+                    mitte = seperator + DateTime.Now.ToString("HH.mm.ss");
+                    break;
+
+            }
+
+
+
+            //Suffix
+            switch (suffixindex)
+            {
+                case -1: // Nichts gewählt
+                    break;
+
+                case 0: // Nichts gewählt
+                    break;
+
+                case 1: // Nummern  
+                    if (isSimulated)
+                    {
+                        suffix = seperator + "001";
+                    }
+                    else
+                    {
+                        imagecounter2 = imagecounter2 + 1;
+                        suffix = seperator + imagecounter2.ToString("D3");
+                    }
+                    break;
+
+                case 2: // Datum
+                    suffix = seperator + DateTime.Now.ToString("dd.MM.yyyy");
+                    break;
+
+                case 3: // Urzeit
+                    suffix = seperator + DateTime.Now.ToString("HH.mm.ss");
+                    break;
+
+            }
+
+
+            return prefix + mitte + suffix;
+        }
+
 
         private int GetBatteryLevel()
         {

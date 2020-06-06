@@ -210,30 +210,47 @@
                     <Label x:Name="label1" Content="Einstellungen:" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.046,-0.014" Width="161" HorizontalAlignment="Left" Foreground="#DDFFFFFF" FontSize="14" FontWeight="Bold"/>
                     <Button x:Name="button" Content="Bilderordner wählen..." Click="Button_ChangeFolderClick"  Height="Auto" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="10,15,10,0" VerticalAlignment="Top"/>
                     <Label x:Name="label_imageFodlerPath" Content="Kein Ordner gewählt" Margin="10,5,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
-                    <CheckBox x:Name="checkBox_liveview" Checked="Checkbox_LiveView_Checked" Unchecked="Checkbox_LiveView_UnChecked" Content="LiveView aktivieren" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="231" Height="20" Foreground="White"/>
+                    <CheckBox x:Name="checkBox_liveview" Checked="Checkbox_LiveView_Checked" Unchecked="Checkbox_LiveView_UnChecked" Content="LiveView aktivieren" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="231" Height="20" Foreground="White" BorderBrush="White" Background="White"/>
                     <Label x:Name="label_devicename" Content="Kein Gerät verbunden" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="231" Background="#00000000" Foreground="#DDFFFFFF"/>
                     <DockPanel>
                         <Label x:Name="Label_NikonType" Content="Modell auswählen:" HorizontalAlignment="Left" Margin="10,5,0,0" Width="108" Foreground="#DDFFFFFF" VerticalAlignment="Top"/>
                         <ComboBox x:Name="comboBox_CameraModel" Margin="0,5,10,0" VerticalAlignment="Top" SelectionChanged="ComboBox_CameraModel_SelectionChanged" Foreground="White" HorizontalAlignment="Right" Width="108" BorderBrush="#89FFFFFF" IsSynchronizedWithCurrentItem="False" SelectedIndex="0"/>
                     </DockPanel>
                     <GroupBox x:Name="groupBox" Header="Dateinamen:" Margin="10,15" VerticalAlignment="Top">
-                        <Grid>
-                            <Label x:Name="label3" Content="Präfix:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
-                            <TextBox x:Name="textBox_prefix" Height="24" Margin="67,0,0,0" TextWrapping="Wrap" Text="IMG_" VerticalAlignment="Top" Foreground="White" BorderBrush="#89FFFFFF"/>
-                            <Label x:Name="label3_Copy" Content="Mitte" HorizontalAlignment="Left" Margin="0,34,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF" RenderTransformOrigin="0.486,0.854"/>
-                            <ComboBox x:Name="comboBox_Filename_Mitte" Margin="67,30,0,0" VerticalAlignment="Top" Foreground="#FF07215E" BorderBrush="#89FFFFFF" SelectedIndex="0" Background="White">
-                                <ComboBoxItem  Content="Nummerrieren" Foreground="Black"/>
-                                <ComboBoxItem Content="Datum" Foreground="Black"/>
-                                <ComboBoxItem Content="Uhrzeit" Foreground="Black"/>
-                            </ComboBox>
-                            <Label x:Name="label3_Copy1" Content="Suffix:" HorizontalAlignment="Left" Margin="0,64,0,0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
-                            <ComboBox x:Name="comboBox_Filename_Suffix" Margin="67,62,0,0" VerticalAlignment="Top" Foreground="#FF07215E" BorderBrush="#89FFFFFF" SelectedIndex="0" Background="White">
-                                <ComboBoxItem Content="Kein Suffix"/>
-                                <ComboBoxItem  Content="Nummerrieren" Foreground="Black"/>
-                                <ComboBoxItem Content="Datum" Foreground="Black"/>
-                                <ComboBoxItem Content="Uhrzeit" Foreground="Black"/>
-                            </ComboBox>
-                        </Grid>
+                        <StackPanel Margin="0,5,0,0">
+                            <DockPanel Margin="0,5,0,0">
+                                <Label x:Name="label3" Content="Präfix:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                                <TextBox x:Name="textBox_prefix" TextChanged="textBox_prefix_TextChanged" Height="24" Margin="15,0,0,0" TextWrapping="Wrap" Text="IMG_" VerticalAlignment="Top" Foreground="White" BorderBrush="#89FFFFFF" Width="120" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                            </DockPanel>
+                            <DockPanel LastChildFill="False" Margin="0,5,0,0">
+                                <Label x:Name="label3_Copy" Content="Mitte" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Foreground="#DDFFFFFF" RenderTransformOrigin="0.486,0.854"/>
+                                <ComboBox x:Name="comboBox_Filename_Mitte" Margin="0" SelectionChanged="comboBox_FilenamePreviewSelectionChanged" VerticalAlignment="Top" Foreground="White" BorderBrush="#89FFFFFF" SelectedIndex="0" HorizontalAlignment="Right" DockPanel.Dock="Right" Width="120">
+                                    <ComboBoxItem  Content="Nummerrieren" Foreground="White"/>
+                                    <ComboBoxItem Content="Datum" Foreground="White"/>
+                                    <ComboBoxItem Content="Uhrzeit" Foreground="White"/>
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="0,5,0,0" LastChildFill="False">
+                                <Label x:Name="label3_Copy1" Content="Suffix:" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                                <ComboBox x:Name="comboBox_Filename_Suffix" SelectionChanged="comboBox_FilenamePreviewSelectionChanged" Margin="0" VerticalAlignment="Top" Foreground="White" BorderBrush="#89FFFFFF" SelectedIndex="0" HorizontalAlignment="Right" DockPanel.Dock="Right" Width="120">
+                                    <ComboBoxItem Content="Kein Suffix" Foreground="White"/>
+                                    <ComboBoxItem Content="Nummerrieren" Foreground="White"/>
+                                    <ComboBoxItem Content="Datum" Foreground="White"/>
+                                    <ComboBoxItem Content="Uhrzeit" Foreground="White"/>
+                                </ComboBox>
+                            </DockPanel>
+                            <DockPanel Margin="0,5,0,0" LastChildFill="False">
+                                <Label x:Name="label3_Copy2" Content="Trennzeichen:" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Foreground="#DDFFFFFF"/>
+                                <ComboBox x:Name="comboBox_Filename_Seperator" SelectionChanged="comboBox_FilenamePreviewSelectionChanged" Margin="0" VerticalAlignment="Top" Foreground="White" BorderBrush="#89FFFFFF" SelectedIndex="0" HorizontalAlignment="Right" DockPanel.Dock="Right" Width="120">
+                                    <ComboBoxItem Content="Kein Trennzeichen" Foreground="White"/>
+                                    <ComboBoxItem Content="Punkt ." Foreground="White"/>
+                                    <ComboBoxItem Content="Minus -" Foreground="White"/>
+                                    <ComboBoxItem Content="Unterstrich _" Foreground="White"/>
+                                    <ComboBoxItem Content="Leerzeichen " Foreground="White"/>
+                                </ComboBox>
+                            </DockPanel>
+                            <Label x:Name="label_PreviewFileName" Content="" Margin="0,5" Foreground="#DDFFFFFF"/>
+                        </StackPanel>
                     </GroupBox>
 
                 </StackPanel>
