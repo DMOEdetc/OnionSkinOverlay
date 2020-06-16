@@ -24,8 +24,12 @@
         <SolidColorBrush Opacity="0" Color="White"></SolidColorBrush>
     </Window.Background>
 
-    <Grid Height="450" Width="800">
-        <DockPanel Grid.Column="1" Grid.Row="1">
+    <Grid MinWidth="800" MinHeight="450">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="799*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.ColumnSpan="2">
             <!-- Menübar -->
             <DockPanel x:Name="titleBar" Background="#FF07215E" DockPanel.Dock="Top">
                 <Grid>
@@ -125,7 +129,7 @@
 
             </Grid>
         </DockPanel>
-        <Grid>
+        <Grid Grid.ColumnSpan="2">
             <Grid.Resources>
                 <Style TargetType="Thumb">
                     <Style.Setters>
@@ -203,7 +207,7 @@
 
         </Grid>
         <!-- Sidemenü -->
-        <Grid x:Name="MainSettingsGrid" HorizontalAlignment="Left" Margin="-277,80,0,70" Background="#FF07215E" Panel.ZIndex="50" MinHeight="300" MinWidth="251">
+        <Grid x:Name="MainSettingsGrid" Margin="-277,80,0,60" Background="#FF07215E" Panel.ZIndex="50" MinHeight="300" MinWidth="251" HorizontalAlignment="Left" Grid.Column="1">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel Orientation="Vertical" x:Name="MainSettingsWrapper" VerticalAlignment="Top">
 

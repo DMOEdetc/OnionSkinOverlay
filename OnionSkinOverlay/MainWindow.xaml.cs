@@ -721,7 +721,7 @@ namespace OnionSkinOverlay
         {
             ThicknessAnimation tahauptmenu = new ThicknessAnimation();
             tahauptmenu.From = MainSettingsGrid.Margin;
-            tahauptmenu.To = new Thickness(0, 80, 260, 70);
+            tahauptmenu.To = new Thickness(0, 80, 270, 60);
             tahauptmenu.Duration = new Duration(TimeSpan.FromMilliseconds(150));
             MainSettingsGrid.BeginAnimation(Grid.MarginProperty, tahauptmenu);
         }
@@ -730,7 +730,7 @@ namespace OnionSkinOverlay
         {
             ThicknessAnimation tahauptmenu = new ThicknessAnimation();
             tahauptmenu.From = MainSettingsGrid.Margin;
-            tahauptmenu.To = new Thickness(-260, 80, 0, 70);
+            tahauptmenu.To = new Thickness(-270, 80, 0, 60);
             tahauptmenu.Duration = new Duration(TimeSpan.FromMilliseconds(150));
             MainSettingsGrid.BeginAnimation(Grid.MarginProperty, tahauptmenu);
         }
@@ -805,7 +805,7 @@ namespace OnionSkinOverlay
                 }
 
                 string tempFileName = getFileName(textBox_prefix.Text, itemindexseperator, itemindexmitte, itemindexsuffix, true);
-                label_PreviewFileName.Content = tempFileName;
+                label_PreviewFileName.Content = tempFileName.Replace("_", "__");
             }
         }
 
