@@ -51,7 +51,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_89BF78C7092636DF2F6CFCB045A596CA"
+        "MsmKey" = "8:_90602FBA00F2B26E9DC916AC302E5720"
         "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -71,6 +71,12 @@
         {
         "MsmKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E5A8120FA2DDE1E20B6CB03C1D0EDA76"
+        "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -124,7 +130,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_89BF78C7092636DF2F6CFCB045A596CA"
+        "OwnerKey" = "8:_E5A8120FA2DDE1E20B6CB03C1D0EDA76"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_90602FBA00F2B26E9DC916AC302E5720"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -335,14 +347,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_89BF78C7092636DF2F6CFCB045A596CA"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_90602FBA00F2B26E9DC916AC302E5720"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_89BF78C7092636DF2F6CFCB045A596CA"
+                    "_90602FBA00F2B26E9DC916AC302E5720"
                     {
                     "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
@@ -415,6 +427,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E5A8120FA2DDE1E20B6CB03C1D0EDA76"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:nikoncswrapper, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_E5A8120FA2DDE1E20B6CB03C1D0EDA76"
+                    {
+                    "Name" = "8:nikoncswrapper.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:nikoncswrapper.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E8C95D3556971789E63E7E28923B6871"
@@ -568,25 +611,25 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OnionSkinOverlay"
-        "ProductCode" = "8:{5B20E543-DB92-4FF7-9FD1-559F76EB10E8}"
-        "PackageCode" = "8:{408E9178-2C33-4215-9BF1-D3AB2F9BD142}"
+        "ProductCode" = "8:{1D835338-69FF-457F-81C0-F76F8D45BD60}"
+        "PackageCode" = "8:{B06E62C1-9251-4A78-8066-4D931B362F5F}"
         "UpgradeCode" = "8:{FC1F291D-866E-44A5-B3E2-89AFD73FC83D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:DMOEdetc"
+        "ProductVersion" = "8:1.1.0"
+        "Manufacturer" = "8:Dersim Özdag"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:OnionSkinOverlay"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:Dersim Özdag"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
-        "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPURLINFOABOUT" = "8:https://dersimoezdag.de/"
+        "ARPPRODUCTICON" = "8:_FC90FC1362174C6DAB37856545E0F328"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -1118,7 +1161,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D35B58A9F1E54837A4418824A333C4A2"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\OnionSkinOverlay\\obj\\Release\\OnionSkinOverlay.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
