@@ -193,6 +193,30 @@
             <Thumb Grid.Row="2" Grid.Column="1" Height="4" Cursor="SizeNS" Tag="1" VerticalAlignment="Bottom" DragDelta="Thumb_DragDelta" />
 
             <!-- Content -->
+
+            <Grid  Margin="0,15,0,10" Grid.Row="1" Grid.ColumnSpan="3" ShowGridLines="{Binding ElementName=checkBox_showGrid, FallbackValue=False, Mode=OneWay,Path=IsChecked}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+
+            </Grid>
+
             <Image x:Name="image_LiveView" Margin="0,15,0,10" Grid.Row="1" Grid.ColumnSpan="3" Panel.ZIndex="-3"/>
             <Image x:Name="image_OnionLayer" Margin="0,15,0,10" Grid.Row="1" Grid.ColumnSpan="3" Opacity="{Binding Value, ElementName=slider_ImageTransparency}" Panel.ZIndex="-2"/>
             <fa:ImageAwesome x:Name="spinner_MainWindowCenter" Margin="337,163" Icon="CircleOutlineNotch" Spin="true" SpinDuration="2" RenderTransformOrigin="0.5,0.5" Foreground="White" Visibility="Hidden" Panel.ZIndex="50" Grid.Row="1" Grid.Column="1" Width="75" Height="75" />
@@ -209,7 +233,7 @@
         <!-- Sidemenü -->
         <Grid x:Name="MainSettingsGrid" Margin="-277,80,0,60" Background="#FF07215E" Panel.ZIndex="50" MinHeight="300" MinWidth="251" HorizontalAlignment="Left" Grid.Column="1">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <StackPanel Orientation="Vertical" x:Name="MainSettingsWrapper" VerticalAlignment="Top">
+                <StackPanel Orientation="Vertical" x:Name="MainSettingsWrapper" VerticalAlignment="Top" Margin="0,5">
 
                     <Label x:Name="label1" Content="Einstellungen:" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.046,-0.014" Width="161" HorizontalAlignment="Left" Foreground="#DDFFFFFF" FontSize="14" FontWeight="Bold"/>
                     <Button x:Name="button" Content="Bilderordner wählen..." Click="Button_ChangeFolderClick"  Height="Auto" Background="#00000000" FontWeight="Normal" FontSize="12" Foreground="White" Margin="10,15,10,0" VerticalAlignment="Top"/>
@@ -220,6 +244,7 @@
                         <Label x:Name="Label_NikonType" Content="Modell auswählen:" HorizontalAlignment="Left" Margin="10,5,0,0" Width="108" Foreground="#DDFFFFFF" VerticalAlignment="Top"/>
                         <ComboBox x:Name="comboBox_CameraModel" Margin="0,5,10,0" VerticalAlignment="Top" SelectionChanged="ComboBox_CameraModel_SelectionChanged" Foreground="White" HorizontalAlignment="Right" Width="108" BorderBrush="#89FFFFFF" IsSynchronizedWithCurrentItem="False" SelectedIndex="0"/>
                     </DockPanel>
+                    <CheckBox x:Name="checkBox_showGrid" Content="Hilfslinien anzeigen" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" Width="231" Height="20" Foreground="White" BorderBrush="White" Background="White"/>
                     <GroupBox x:Name="groupBox" Header="Dateinamen:" Margin="10,15" VerticalAlignment="Top">
                         <StackPanel Margin="0,5,0,0">
                             <DockPanel Margin="0,5,0,0">
