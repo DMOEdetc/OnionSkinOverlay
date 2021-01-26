@@ -226,7 +226,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.6.1"
+                "FrameworkVersion" = "8:.NETFramework,Version=v4.8"
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=671728"
                 }
@@ -612,7 +612,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OnionSkinOverlay"
         "ProductCode" = "8:{1D835338-69FF-457F-81C0-F76F8D45BD60}"
-        "PackageCode" = "8:{B06E62C1-9251-4A78-8066-4D931B362F5F}"
+        "PackageCode" = "8:{E563B6E2-76C3-42CD-8708-8846486E4AB6}"
         "UpgradeCode" = "8:{FC1F291D-866E-44A5-B3E2-89AFD73FC83D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1161,7 +1161,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D35B58A9F1E54837A4418824A333C4A2"
             {
-            "SourcePath" = "8:..\\OnionSkinOverlay\\obj\\Release\\OnionSkinOverlay.exe"
+            "SourcePath" = "8:..\\OnionSkinOverlay\\obj\\Debug\\OnionSkinOverlay.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
