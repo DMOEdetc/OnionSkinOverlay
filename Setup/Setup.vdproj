@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_076D1B79D1414EC0B336F3FF954669D2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0A0AF543EC3715ED76F3F696CD301077"
         "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
         "MsmSig" = "8:_UNDEFINED"
@@ -27,7 +33,37 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_0B8D398F2B954A3BBED839A37325132F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0DF482F095B0420892AFED38E9858A66"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0E8647B3B9624022843441179F56925C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_463245C460DC48CD8EE36D88FDC83E61"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_59406D5F5F3A43CDA056A07EB1BF798F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_62DC67774763436FBA48ABDD7B15E84A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -35,6 +71,18 @@
         {
         "MsmKey" = "8:_64D1D187CAB564C90DDE86BA2EC8532B"
         "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6A3E0BBED2654FD697FE0CB9967C7378"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_707066527FA1474B80021D24FFF43496"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,7 +117,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B382DABFC1264882901A46EF6FDCFE0B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C1C577573D3042C786C39C50D724A7E6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D45D21D10DAE4C64B63CA9A04BD36B2B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -83,6 +149,12 @@
         {
         "MsmKey" = "8:_E8C95D3556971789E63E7E28923B6871"
         "OwnerKey" = "8:_D35B58A9F1E54837A4418824A333C4A2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F7B537A32EAA46A3BE7C1C9F8A4B38B2"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -234,6 +306,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_076D1B79D1414EC0B336F3FF954669D2"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x86\\Type0027.md3"
+            "TargetName" = "8:Type0027.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_BF52D86F9A8E4715890EE389E0131121"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0A0AF543EC3715ED76F3F696CD301077"
             {
             "AssemblyRegister" = "3:1"
@@ -265,10 +357,110 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0B8D398F2B954A3BBED839A37325132F"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x64\\Type0012.md3"
+            "TargetName" = "8:Type0012.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_4379B957288C4F2297BF12689BB57F6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0DF482F095B0420892AFED38E9858A66"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x64\\NkdPTP.dll"
+            "TargetName" = "8:NkdPTP.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_4379B957288C4F2297BF12689BB57F6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0E8647B3B9624022843441179F56925C"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x86\\Type0022.md3"
+            "TargetName" = "8:Type0022.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_BF52D86F9A8E4715890EE389E0131121"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_463245C460DC48CD8EE36D88FDC83E61"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x64\\Type0001.md3"
+            "TargetName" = "8:Type0001.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_4379B957288C4F2297BF12689BB57F6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_59406D5F5F3A43CDA056A07EB1BF798F"
             {
             "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x86\\Type0003.md3"
             "TargetName" = "8:Type0003.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_BF52D86F9A8E4715890EE389E0131121"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62DC67774763436FBA48ABDD7B15E84A"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x86\\Type0001.md3"
+            "TargetName" = "8:Type0001.md3"
             "Tag" = "8:"
             "Folder" = "8:_BF52D86F9A8E4715890EE389E0131121"
             "Condition" = "8:"
@@ -314,6 +506,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6A3E0BBED2654FD697FE0CB9967C7378"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x86\\Type0012.md3"
+            "TargetName" = "8:Type0012.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_BF52D86F9A8E4715890EE389E0131121"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_707066527FA1474B80021D24FFF43496"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x64\\Type0027.md3"
+            "TargetName" = "8:Type0027.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_4379B957288C4F2297BF12689BB57F6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7E8165830537AAD67ADCFDEAD5622349"
@@ -429,6 +661,66 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B382DABFC1264882901A46EF6FDCFE0B"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x64\\Type0022.md3"
+            "TargetName" = "8:Type0022.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_4379B957288C4F2297BF12689BB57F6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C1C577573D3042C786C39C50D724A7E6"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x64\\Type0019.md3"
+            "TargetName" = "8:Type0019.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_4379B957288C4F2297BF12689BB57F6D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D45D21D10DAE4C64B63CA9A04BD36B2B"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x86\\NkdPTP.dll"
+            "TargetName" = "8:NkdPTP.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_BF52D86F9A8E4715890EE389E0131121"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E5A8120FA2DDE1E20B6CB03C1D0EDA76"
             {
             "AssemblyRegister" = "3:1"
@@ -489,6 +781,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F7B537A32EAA46A3BE7C1C9F8A4B38B2"
+            {
+            "SourcePath" = "8:..\\OnionSkinOverlay\\Nikon SDK\\Binary Files\\x86\\Type0019.md3"
+            "TargetName" = "8:Type0019.md3"
+            "Tag" = "8:"
+            "Folder" = "8:_BF52D86F9A8E4715890EE389E0131121"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FC90FC1362174C6DAB37856545E0F328"
@@ -611,15 +923,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:OnionSkinOverlay"
-        "ProductCode" = "8:{1D835338-69FF-457F-81C0-F76F8D45BD60}"
-        "PackageCode" = "8:{E563B6E2-76C3-42CD-8708-8846486E4AB6}"
+        "ProductCode" = "8:{F27F60D1-F649-4731-B87A-3C236D16C04A}"
+        "PackageCode" = "8:{A08C6CEC-FEDE-4537-AD78-8B17EDC80572}"
         "UpgradeCode" = "8:{FC1F291D-866E-44A5-B3E2-89AFD73FC83D}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.0"
+        "ProductVersion" = "8:1.1.2"
         "Manufacturer" = "8:Dersim Özdag"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1161,7 +1473,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D35B58A9F1E54837A4418824A333C4A2"
             {
-            "SourcePath" = "8:..\\OnionSkinOverlay\\obj\\Debug\\OnionSkinOverlay.exe"
+            "SourcePath" = "8:..\\OnionSkinOverlay\\obj\\Release\\OnionSkinOverlay.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5EC3DDA927DD45FE87763A89588CB15A"
